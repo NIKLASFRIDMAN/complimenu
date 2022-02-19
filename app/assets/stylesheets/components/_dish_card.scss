@@ -1,0 +1,47 @@
+.container-dish {
+  display: flex;
+  margin: auto;
+}
+.dish-card {
+  display: flex;
+  padding: 16px;
+  height: 250px;
+  width: 700px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 20px;
+}
+
+.dish-card p {
+  padding: 10px;
+}
+
+.title-plus-minus {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px
+}
+
+.category-name-price {
+  display: flex;
+  justify-content: space-between;
+  padding: 10
+}
+
+.item-picure img {
+  position: relative;
+  height: 100%;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-picure p {
+  position: absolute;
+  top: 116px;
+  left: 72px;
+  background: #6B7379;
+  color: r;
+  padding: 4px 16px;
+  border-radius: 8px;
+}
