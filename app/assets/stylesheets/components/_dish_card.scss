@@ -1,47 +1,71 @@
-.container-dish {
-  display: flex;
-  margin: auto;
-}
 .dish-card {
   display: flex;
-  padding: 16px;
-  height: 250px;
-  width: 700px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding-bottom: 16px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 150px;
   margin-top: 20px;
+  border-bottom: #C4C4C4 solid 4px;
+}
+
+.dish-content {
+  flex: 1;
 }
 
 .dish-card p {
-  padding: 10px;
+  padding-left: 12px;
+  color: #606060;
+  font-size: 16px;
+  margin-bottom: 12px;
+
 }
 
+.dish-card h2 {
+  color: #3F4447;
+  font-style: bold;
+  font-size: 24px;
+  padding-left: 12px;
+  font-weight: bold;
+}
 .title-plus-minus {
   display: flex;
   justify-content: space-between;
-  padding: 10px
 }
 
 .category-name-price {
   display: flex;
   justify-content: space-between;
-  padding: 10
 }
 
-.item-picure img {
-  position: relative;
+.item-picture {
+  width: 122px;
   height: 100%;
-  width: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+  background: url(https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80);
+  background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 11px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
-.item-picure p {
+.item-picture p {
   position: absolute;
-  top: 116px;
-  left: 72px;
   background: #6B7379;
-  color: r;
-  padding: 4px 16px;
+   color: white;
+  padding: 2px 8px;
   border-radius: 8px;
+  font-size: 12px;
+}
+
+
+.color-line {
+  background: #6B7379;
+}
+
+
+.fa-solid {
+  color: #6B7379;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 }
