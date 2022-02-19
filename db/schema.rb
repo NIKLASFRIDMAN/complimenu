@@ -39,10 +39,9 @@ ActiveRecord::Schema.define(version: 2022_02_19_101845) do
     t.integer "status", default: 0, null: false
     t.datetime "time_delivered"
     t.datetime "time_ordered"
-    t.bigint "user_id", null: false
+    t.float "total_price", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,5 +58,4 @@ ActiveRecord::Schema.define(version: 2022_02_19_101845) do
 
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
-  add_foreign_key "orders", "users"
 end
