@@ -1,0 +1,58 @@
+
+.dish-card {
+  display: flex;
+  padding-bottom: 16px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 150px;
+  margin-top: 20px;
+  border-bottom: #C4C4C4 solid 4px;
+  p {
+  padding-left: 12px;
+  color: #606060;
+  font-size: 16px;
+  margin-bottom: 12px;
+  }
+  h2 {
+  color: #3F4447;
+  font-style: bold;
+  font-size: 24px;
+  padding-left: 12px;
+  font-weight: bold;
+  }
+}
+
+.dish-card-content {
+  flex: 1;
+  .title-plus-minus {
+  display: flex;
+  justify-content: space-between;
+  }
+  .category-name-price {
+    display: flex;
+    justify-content: space-between;
+  }
+  .fa-solid {
+    color: #6B7379;
+  }
+}
+
+.dish-picture {
+  width: 122px;
+  height: 100%;
+  background: url(https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80);
+  background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 11px;
+  padding-left: 5px;
+  padding-right: 66px;
+  padding-top: 5px;
+  p {
+  background: #6B7379;
+   color: white;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  }
+}
