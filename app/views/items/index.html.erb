@@ -1,0 +1,10 @@
+<% @categories.each do |category| %>
+  <h3><%= category.capitalize.pluralize(2) %></h3>
+  <% @items.where("category = '#{category}'").each do |item| %>
+    <h4><%= item.name %></h4>
+    <p><%= item.category %></p>
+    <p><%= item.description %></p>
+    <p><%= item.price %></p>
+    <img src=<%= item.image_url %> alt="">
+  <% end %>
+<% end %>
