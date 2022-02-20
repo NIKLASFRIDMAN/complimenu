@@ -1,10 +1,11 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@400;700&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Knewave&family=Montserrat:wght@100&family=Open+Sans:wght@400;700&family=Poppins&display=swap');
 
 // Define fonts for body and headers
-$body-font: 'Open Sans', sans-serif;
-$headers-font: 'Open Sans', sans-serif;
+$body-font: 'PT Sans', sans-serif;
+$headers-font: 'PT Sans', sans-serif;
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
