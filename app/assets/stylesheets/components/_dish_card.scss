@@ -10,7 +10,7 @@
   border-bottom: #e9e8e8 solid 4px;
   p {
   padding-left: 12px;
-  color: #606060;
+  color: $dark-gray;
   font-size: 12px;
   max-height: 60px;
   overflow: auto;
@@ -18,7 +18,7 @@
   margin-bottom: 5px;
   }
   h2 {
-  color: #3F4447;
+  color: $title-dish-card;
   font-size: 18px;
   padding-left: 12px;
   font-weight: bold;
@@ -43,10 +43,10 @@
     justify-content: space-between;
   }
   .fa-solid {
-    color: #6B7379;
+    color: $dark-gray;
   }
   h6 {
-    color: #3F4447;
+    color: $title-dish-card;
     font-size: 14px;
     font-weight: bold;
     padding-left: 12px;
@@ -63,8 +63,8 @@
   padding-right: 66px;
   padding-top: 5px;
   p {
-  background: #6B7379;
-   color: white;
+  background: $dark-gray;
+  color: $white;
   padding: 2px 8px;
   border-radius: 8px;
   font-size: 12px;
