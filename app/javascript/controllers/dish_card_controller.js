@@ -2,11 +2,15 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["description"]
-
+  static targets = ["description", "card"]
   revealDescription() {
-    this.descriptionTarget.style.removeProperty('display', '-webkit-line-clamp', '-webkit-box-orient', 'overflow','text-overflow');
-    this.descriptionTarget.classList.remove('text-hidden')
-    console.log(this.descriptionTarget)
+    if (this.descriptionTarget.classList.contains('toggle-paragraph') && this.descriptionTarget.scrollHeight > this.descriptionTarget.clientHeight ) {
+      this.descriptionTarget.classList.remove('toggle-paragraph');
+      this.cardTarget.style.backgroundColor = "#cccccc";
+    }
+    else {
+      this.descriptionTarget.classList.add('toggle-paragraph');
+      this.cardTarget.style.backgroundColor = "";
+    }
   }
 }
