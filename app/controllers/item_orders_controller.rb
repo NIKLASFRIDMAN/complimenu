@@ -12,8 +12,10 @@ class ItemOrdersController < ApplicationController
 
   def destroy
     item_order = ItemOrder.find_by(item_id: params[:id], order_id: session[:order_id])
-    item_order.destroy
-    redirect_to items_path
+    if item_order.present?
+      item_order.destroy
+      redirect_to items_path
+    end
   end
 
   def decrease
