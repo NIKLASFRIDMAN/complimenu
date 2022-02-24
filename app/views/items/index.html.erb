@@ -1,5 +1,8 @@
+<%= render "shared/banner-front_page" %>
+
+
 <% @categories.each do |category| %>
-  <h1><%= category.capitalize.pluralize(2) %></h1>
+  <h1 class="h1-dish-card"><%= category.capitalize.pluralize(2) %></h1>
     <% @items.where("category = '#{category}'").each do |item| %>
       <div class="dish-card" data-controller="dish-card">
           <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
@@ -19,3 +22,5 @@
       </div>
     <% end %>
 <% end %>
+
+<%= render "shared/basket_button" %>
