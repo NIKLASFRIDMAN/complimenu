@@ -4,10 +4,13 @@
 @import "navbar";
 @import "_dish_card";
 @import "buttons";
+@import "banner-front_page";
+=======
 @import "_order_card";
 
+
 h1 {
-  color: #3F4447;
+  color: $title-dish-card;
   font-size: 24px;
   font-weight: bold;
   padding-left: 10px;
