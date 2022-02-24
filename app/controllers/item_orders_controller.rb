@@ -10,6 +10,22 @@ class ItemOrdersController < ApplicationController
     redirect_to items_path
   end
 
+  def destroy
+    item_order = ItemOrder.find_by(item_id: params[:id], order_id: session[:order_id])
+    item_order.destroy
+    redirect_to items_path
+  end
+
+  def decrease
+    ItemOrder.find(params[:id]).decrement(:quantity).save!
+    redirect_to items_path
+  end
+
+  def add
+    ItemOrder.find(params[:id]).increment(:quantity).save!
+    redirect_to items_path
+  end
+
   def find_order
     @order = Order.find(session[:order_id])
   end
