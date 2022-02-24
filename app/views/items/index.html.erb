@@ -1,6 +1,3 @@
-<%= render "shared/banner-front_page" %>
-
-
 <% @categories.each do |category| %>
   <h1 class="h1-dish-card"><%= category.capitalize.pluralize(2) %></h1>
     <% @items.where("category = '#{category}'").each do |item| %>
