@@ -9,5 +9,6 @@ class PagesController < ApplicationController
       @order.save!
       session[:order_id] = @order.id
     end
+     @categories = Item.distinct.pluck(:category)
   end
-end
+end 

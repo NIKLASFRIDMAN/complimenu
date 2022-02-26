@@ -1,0 +1,19 @@
+.banner_summary_page{
+    background: $light-dark-gray;
+    display:flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 65px 0px 0px 0px;
+    height: 108px;
+    h1{
+        color: $white;
+        padding-left: 12px;
+    }
+}
+
+.payment_total {
+ display: flex;
+ justify-content: space-between;
+ padding-left: 40px;
+ padding-right: 40px;
+}

@@ -1,5 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Link",items_path%>
-<%= @order.id %>
-<%= render "shared/category-menu_card" %>
+<div class= "banner-front_page">
+    <div class= "avatar-bordered-large">
+    </div>
+    <h1>Pizza Hut
+    </h1>
+    <p>Select a category
+    </p>
+</div>
+
+<div class= category-menu-container>
+    <% @categories.each do |category|%>
+        <a href="#" class="btn category-menu_card btn-lg" tabindex="-1" role="button">
+            <%=category%>
+        </a>
+    <% end %>
+</div>
+
+
