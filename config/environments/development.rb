@@ -11,8 +11,6 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-
-  config.hosts << "443a-84-211-160-140.ngrok.io"
   # Show full error reports.
   config.consider_all_requests_local = true
   # Enable/disable caching. By default caching is disabled.
