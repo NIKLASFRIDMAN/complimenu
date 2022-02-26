@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(session[:order_id])
   end
-  
+
   def checkout
+  end
+
+  def total
+    @order = Order.find(session[:order_id])
   end
 end
