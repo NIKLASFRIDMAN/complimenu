@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :item_orders, only: [:destroy]
   get "/add/:id", to: "item_orders#add", as: "add_item"
   get "/decrease/:id", to: "item_orders#decrease", as: "decrease_item"
+  get "/ordersummary", to: "orders#show", as: "order_summary"
   get '/checkout', to: 'orders#checkout'
   # TODO namespace for routing
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
