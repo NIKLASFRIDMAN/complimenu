@@ -4,7 +4,6 @@
   <% @itemid = item.item_id %>
   <% @itemquantity = item.quantity %>
   <% @item = Item.where(id:@itemid) %>
-
     <% @item.each do |item| %>
     <div class="order-card">
         <div class="order-card-content">
@@ -28,5 +27,5 @@
 
 <div class="payment_total">
   <h1>Total:</h1>
-  <h1><%= @pricearray.sum %></h1>
+  <h1><%= @pricearray.sum %> €</h1>
 </div>
