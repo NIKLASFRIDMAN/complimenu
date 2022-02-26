@@ -15,9 +15,18 @@
               <p><%= item.description %></p>
           <div class="order-category-name-price">
             <h6><%= item.category %></h6>
+            <% @pricearray = [] %>
             <h6><%= item.price * @itemquantity %></h6>
+            <% @item = item.price * @itemquantity %>
+            <% @pricearray << @item %>
           </div>
         </div>
       </div>
     <% end %>
 <% end %>
+
+
+<div class="payment_total">
+  <h1>Total:</h1>
+  <h1><%= @pricearray.sum %></h1>
+</div>
