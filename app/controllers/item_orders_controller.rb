@@ -6,8 +6,11 @@ class ItemOrdersController < ApplicationController
     item_order = ItemOrder.new(quantity: 1)
     item_order.item_id = params[:item_id]
     item_order.order_id = @order.id
-    item_order.save!
-    redirect_to items_path
+    respond_to do |format|
+      item_order.save
+      format.html { redirect_to items_path }
+      format.json
+    end
   end
 
   def destroy
@@ -18,13 +21,10 @@ class ItemOrdersController < ApplicationController
     end
   end
 
-  def decrease
-    ItemOrder.find(params[:id]).decrement(:quantity).save!
-    redirect_to items_path
-  end
-
-  def add
-    ItemOrder.find(params[:id]).increment(:quantity).save!
+  def update
+    @item_order = ItemOrder.find(params[:id])
+    @item_order.quantity += params[:quantity].to_i
+    @item_order.save
     redirect_to items_path
   end
 
