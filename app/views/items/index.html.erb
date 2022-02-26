@@ -1,7 +1,7 @@
 <% @categories.each do |category| %>
-  <h1><%= category.capitalize.pluralize(2) %></h1>
+  <h1 class="h1-dish-card"><%= category.capitalize.pluralize(2) %></h1>
     <% @items.where("category = '#{category}'").each do |item| %>
-      <div class="dish-card">
+      <div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
           <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
             <p><i class="fa-regular fa-star"></i> 9.7</p>
           </div>
@@ -31,24 +31,13 @@
                 <% end %>
               </p>
             </div>
-              <p><%= item.description %></p>
-            <div class="category-name-price">
-              <h6><%= item.category %></h6>
-              <h6><%= item.price %></h6>
-            </div>
+            <p class="toggle-paragraph" data-action="click->dish-card#revealDescription" data-dish-card-target="description"><%= item.description %></p>
+            <h6 class="price"><%= item.price %></h6>
           </div>
       </div>
     <% end %>
 <% end %>
 
-
-<% @categories.each do |category| %>
-  <h3><%= category.capitalize.pluralize(2) %></h3>
-  <% @items.where("category = '#{category}'").each do |item| %>
-    <h4><%= item.name %></h4>
-    <p><%= item.category %></p>
-    <p><%= item.description %></p>
-    <p><%= item.price %></p>
-    <img src=<%= item.image_url %> alt="">
-  <% end %>
-<% end %>
+  <%= render "shared/basket_button" %>
+  <div class="button-background-colour">
+  </div>
