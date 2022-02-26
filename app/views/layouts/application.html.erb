@@ -15,10 +15,10 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <div class="wrapper">
+    <% unless request.path == '/checkout' || '/ordersummary' %>
       <%= render 'shared/navbar' %>
-      <%# <%= render 'items/dish_card.html.erb' %>
-      <%= yield %>
-    </div>
+    <% end %>
+    <%# <%= render 'items/dish_card.html.erb' %>
+    <%= yield %>
   </body>
 </html>
