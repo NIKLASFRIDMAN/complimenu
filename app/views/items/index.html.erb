@@ -8,24 +8,24 @@
           <div class="dish-card-content">
             <div class="title-plus-minus">
               <h2><%= item.name %></h2>
-              <p>
+              <p data-controller="update-quantity">
                 <% item_order = ItemOrder.find_by(item_id: item.id, order_id: session[:order_id]) %>
                 <% if item_order.present? && item_order.quantity > 1 %>
-                  <%= link_to decrease_item_path(item_order.id) do %>
+                  <%= link_to decrease_item_path(item_order.id), remote:true, data: { update_quantity_target: 'button' } do %>
                     <i class="fa-solid fa-circle-minus"></i>
                   <% end %>
                 <% else %>
-                  <%= link_to item_order_path(item.id), method: :delete do %>
+                  <%= link_to item_order_path(item.id), method: :delete, remote:true, data: { update_quantity_target: 'button' } do %>
                     <i class="fa-solid fa-circle-minus"></i>
                   <% end %>
                 <% end %>
-                <%= item_order.present? ? item_order.quantity : 0 %>
+                <p data-update-quantity-target="quantity" id="quantity-<%= item.id %>"><%= item_order.present? ? item_order.quantity : 0 %></p>
                 <% if item_order.present? %>
-                  <%= link_to add_item_path(item_order.id) do %>
+                  <%= link_to add_item_path(item_order.id), remote:true, data: { update_quantity_target: 'button' } do %>
                     <i class="fa-solid fa-circle-plus"></i>
                   <% end %>
                 <% else %>
-                  <%= link_to item_item_orders_path(item), method: :post do %>
+                  <%= link_to item_item_orders_path(item), method: :post, remote:true, data: { update_quantity_target: 'button' } do %>
                     <i class="fa-solid fa-circle-plus"></i>
                   <% end %>
                 <% end %>
