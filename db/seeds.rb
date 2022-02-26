@@ -15,6 +15,7 @@ puts "Starting seed"
 30.times do |counter|
   food = Faker::Food
   dish = food.dish
+  puts dish
   puts "Seeding #{counter} dish"
   item = Item.new(name: dish,
                   description: food.description,
