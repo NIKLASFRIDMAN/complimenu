@@ -1,2 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "checkout";
+
+// This css is for all pages
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
