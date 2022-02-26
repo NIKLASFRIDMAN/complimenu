@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <% @categories.each do |category| %>
   <div id="<%= category %>">
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
