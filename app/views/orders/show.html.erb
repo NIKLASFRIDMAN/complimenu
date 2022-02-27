@@ -4,21 +4,19 @@
     <%= render 'shared/summary_page' %>
   </div>
   <div>
-    <% items_total_prices = [] %>
     <% @order.item_orders.each do |item_order| %>
-      <% @items = Item.where(id:item_order.id) %>
-        <% @items.each do |item| %>
+      <% @item = Item.where(id:item_order.item.id) %>
+        <% @item.each do |iteminfo| %>
         <div class="order-card">
             <div class="order-card-content">
               <div class="title-plus-minus">
-                <h2><%= item.name %></h2>
+                <h2><%= iteminfo.name %></h2>
                 <p><i class="fa-solid fa-circle-minus"></i>  <%=item_order.quantity%> <i class="fa-solid fa-circle-plus"></i></p>
               </div>
-                <p><%= item.description %></p>
+                <p><%= iteminfo.description %></p>
               <div class="order-category-name-price">
-                <h6><%= item.category %></h6>
-                <h6><%= item.price.round(1) * item_order.quantity %></h6>
-                <% items_total_prices << item.price * item_order.quantity %>
+                <h6><%= iteminfo.category %></h6>
+                <h6><%= (iteminfo.price * item_order.quantity).round(2) %> €</h6>
               </div>
             </div>
         </div>
@@ -28,8 +26,6 @@
 
   <div class="payment_total">
     <h1>Total:</h1>
-    <h1><%= items_total_prices.sum.round(1) %> €</h1>
+    <h1><%= @all_items_total_price[0].round(2) %> €</h1>
   </div>
 </div>
-
-<p><%=@items_total_pricess[0]  %></p>

@@ -3,13 +3,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(session[:order_id])
-    @items_total_pricess = []
+    @all_items_total_price = []
     @order.item_orders.each do |item_order|
-      @items_total_pricess << (item_order.item.price * item_order.quantity)
+      @all_items_total_price << (item_order.item.price * item_order.quantity)
     end
   end
 
   def checkout
   end
-
 end
