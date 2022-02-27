@@ -24,8 +24,9 @@
     <% end %>
   </div>
 
-  <div class="payment_total">
-    <h1>Total:</h1>
-    <h1><%= @all_items_total_price[0].round(2) %> €</h1>
-  </div>
+  <section class="checkout-footer m-4">
+    <h2><strong>Total:</strong></h2>
+    <h2><strong><%= @all_items_total_price[0].round(2) %> €</strong></h2>
+  </section>
+
 </div>
