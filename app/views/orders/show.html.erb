@@ -24,9 +24,15 @@
     <% end %>
   </div>
 
+   <div class="m-4">
+      <section class="payment-btn-container">
+        <%= link_to "Proceed to payment", "#", class: 'payment-buttons'%>
+      </section>
+    </div>
+
   <section class="checkout-footer m-4">
     <h2><strong>Total:</strong></h2>
-    <h2><strong><%= @all_items_total_price[0].round(2) %> €</strong></h2>
+    <h2><strong><%= @all_items_total_price %> €</strong></h2>
   </section>
 
 </div>
