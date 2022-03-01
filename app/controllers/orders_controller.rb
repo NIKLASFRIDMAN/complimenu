@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:checkout, :show, :waiter]
-  before_action :find_order, :calculate_total
+  before_action :find_order, :calculate_total, only: [:show, :checkout]
 
   def show; end
 
