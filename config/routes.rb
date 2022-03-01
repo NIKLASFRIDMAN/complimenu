@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get "/ordersummary", to: "orders#show", as: "order_summary"
   get '/checkout', to: 'orders#checkout'
+  get '/qrcode', to: 'pages#qrcode'
   get '/waiter', to: 'orders#waiter'
 
   # TODO namespace for routing
