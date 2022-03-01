@@ -15,7 +15,7 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <% unless request.path == '/checkout' || '/ordersummary' %>
+    <% unless request.path == '/checkout' || request.path == '/ordersummary' %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%# <%= render 'items/dish_card.html.erb' %>
