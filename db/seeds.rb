@@ -10,16 +10,18 @@ require 'faker'
 CATEGORY_ARRAY = ["Appetizer","Pizza", "Beverage","Dessert","Vegan", "Wine"]
 
 puts "Clearing Items db"
-
+Item.destroy_all
+puts "Starting seed"
 30.times do |counter|
   food = Faker::Food
+  dish = food.dish
+  puts dish
   puts "Seeding #{counter} dish"
-  item = Item.new(name: food.dish,
+  item = Item.new(name: dish,
                   description: food.description,
                   category: CATEGORY_ARRAY.sample,
                   price: rand(10.00..100.00).round(2),
-                  image_url: "https://media.istockphoto.com/photos/top-view-table-full-of-food-picture-id1220017909?s=612x612")
+                  image_url: URI.open("https://source.unsplash.com/random/?food,#{dish}").base_uri)
   item.save!
 end
-
 puts "Done seeding items"

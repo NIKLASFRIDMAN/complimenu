@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :qrcode ]
 
   def home
     if session[:order_id]
@@ -11,4 +11,7 @@ class PagesController < ApplicationController
     end
      @categories = Item.distinct.pluck(:category)
   end
-end 
+
+  def qrcode
+  end
+end
