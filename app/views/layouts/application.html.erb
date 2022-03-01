@@ -18,8 +18,6 @@
     <% unless request.path == '/checkout' || request.path == '/ordersummary' || request.path == '/qrcode' %>
          <%= render 'shared/navbar' %>
     <% end %>
-
-
     <%# <%= render 'items/dish_card.html.erb' %>
     <%= yield %>
   </body>
