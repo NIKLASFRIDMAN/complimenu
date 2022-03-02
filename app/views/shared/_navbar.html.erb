@@ -1,9 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+<% if !current_page?(root_path) %>
+<a class="navbar-back" onclick="window.history.back()">
+  <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.12381 0L0.419048 7.04L0 7.5L0.419048 7.96L7.12381 15L8 14.08L1.73333 7.5L8 0.92L7.12381 0Z"/>
+  </svg>
+</a>
+<%end%>
+  <%= link_to "/", class: "navbar-brand" do %>
     <span class="logo">Complimenu</span>
   <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 

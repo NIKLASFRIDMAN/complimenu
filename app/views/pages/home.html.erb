@@ -6,13 +6,8 @@
     <p>Select a category
     </p>
 </div>
-
 <div class= category-menu-container>
     <% @categories.each do |category|%>
-        <a href="#" class="btn category-menu_card btn-lg" tabindex="-1" role="button">
-            <%=category%>
-        </a>
+      <%= link_to category, items_path(category), class:"btn category-menu_card #{category.downcase} btn-lg " %>
     <% end %>
 </div>
-
-

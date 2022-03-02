@@ -1,5 +1,7 @@
 <% @categories.each do |category| %>
-  <h1 class="h1-dish-card"><%= category.capitalize.pluralize(2) %></h1>
+  <div id="<%= category %>">
+    <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
+   </div>
     <% @items.where("category = '#{category}'").each do |item| %>
       <%= render "dish_card", item: item %>
     <% end %>
