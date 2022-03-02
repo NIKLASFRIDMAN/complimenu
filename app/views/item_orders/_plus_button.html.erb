@@ -1,0 +1,17 @@
+<% if item_order.present? %>
+  <%= link_to item_order_path(item_order.id, quantity: 1), method: :patch,
+              data: {
+                dish_card_target: 'plusButton',
+                action: 'click->dish-card#plus'
+              } do %>
+    <i class="fa-solid fa-circle-plus"></i>
+  <% end %>
+<% else %>
+  <%= link_to item_item_orders_path(item), method: :post,
+              data: {
+                dish_card_target: 'newButton',
+                action: 'click->dish-card#create'
+              } do %>
+    <i class="fa-solid fa-circle-plus"></i>
+  <% end %>
+<% end %>

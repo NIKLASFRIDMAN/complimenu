@@ -1,32 +1,39 @@
 class ItemOrdersController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :find_order
+  before_action :find_order, only: [:create]
 
   def create
-    item_order = ItemOrder.new(quantity: 1)
-    item_order.item_id = params[:item_id]
-    item_order.order_id = @order.id
+    @item_order = ItemOrder.new(quantity: 1)
+    @item_order.item_id = params[:item_id]
+    @item_order.order_id = @order.id
+    @item_order.save
     respond_to do |format|
-      item_order.save
       format.html { redirect_to items_path }
-      format.json
+      format.json { render :update }
     end
   end
 
   def destroy
     item_order = ItemOrder.find_by(item_id: params[:id], order_id: session[:order_id])
-    if item_order.present?
-      item_order.destroy
-      redirect_to items_path
+    @item = item_order.item
+    item_order.destroy
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { render :destroy }
     end
   end
 
   def update
     @item_order = ItemOrder.find(params[:id])
     @item_order.quantity += params[:quantity].to_i
-    @item_order.save
-    redirect_to items_path
+    respond_to do |format|
+      @item_order.save
+      format.html { redirect_to items_path }
+      format.json { render :update }
+    end
   end
+
+  private
 
   def find_order
     @order = Order.find(session[:order_id])
