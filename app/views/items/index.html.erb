@@ -1,17 +1,10 @@
 <% @categories.each do |category| %>
   <div id="<%= category %>">
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
-<<<<<<< HEAD
   </div>
   <% @items.where("category = '#{category}'").each do |item| %>
     <%= render "dish_card", item: item %>
   <% end %>
-=======
-   </div>
-    <% @items.where("category = '#{category}'").each do |item| %>
-      <%= render "dish_card", item: item %>
-    <% end %>
->>>>>>> e0fac052feabdd26c519d8e0bc326b6b4a84253e
 <% end %>
 
 <%= render "shared/basket_button" %>
