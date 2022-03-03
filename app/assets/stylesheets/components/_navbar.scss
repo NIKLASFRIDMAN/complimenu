@@ -1,6 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $sub-main-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -22,4 +27,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.navbar-container {
+  min-height: 56px;
 }
