@@ -11,7 +11,7 @@
   margin-top: 12px;
   p {
   padding-left: 12px;
-  color: #606060;
+  color: $main-color;
   font-size: 12px;
   // max-height: 60px;
   // overflow: auto;
@@ -37,19 +37,24 @@
    .order-content-desc {
      color: black;
    }
+   p {
+     font-size: 20px;
+   }
+   i {
+     font-size: 20px;
+   }
   }
 
   .order-category-name-price {
     display: flex;
     justify-content: space-between;
-
   }
   .fa-solid {
-    color: #6B7379;
+    color: $main-color;
   }
   h6 {
     color: #3F4447;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     padding-left: 12px;
   }

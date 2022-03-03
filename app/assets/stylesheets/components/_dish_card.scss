@@ -17,7 +17,6 @@
   color: $dark-gray;
   font-size: 12px;
   margin-bottom: 5px;
-  padding-right: 75px;
   }
   h2 {
   color: $title-dish-card;
@@ -37,7 +36,7 @@
     text-decoration: none;
   }
     p {
-    color: $dark-gray;
+    color: $main-color;
     }
    h2 {
      flex: 1
@@ -58,7 +57,7 @@
     right: 12px;
   }
   .fa-solid {
-    color: $dark-gray;
+    color: $main-color;
   }
   h6 {
     color: $title-dish-card;
@@ -78,7 +77,7 @@
   padding-right: 66px;
   padding-top: 5px;
   p {
-  background: $dark-gray;
+  background: $main-color;
   color: $white;
   padding: 2px 8px;
   border-radius: 8px;
@@ -93,5 +92,4 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   max-height: 60px;
-
 }

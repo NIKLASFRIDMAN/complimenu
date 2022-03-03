@@ -1,12 +1,12 @@
 .banner-front_page{
-    background: $light-dark-gray;
+    background: $sub-main-color;
     display:flex;
     align-items: center;
     flex-direction: column;
     padding: 16px 0px 0px 0px;
     .avatar-bordered-large{
-    background-color: $dark-gray;
-    border-color: $dark-gray;
+    background-color: $main-color;
+    border-color: $main-color;
     }
     h1{
         color: $white;
