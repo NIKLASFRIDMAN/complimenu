@@ -13,9 +13,7 @@
                 <h2><%= iteminfo.name %></h2>
                 <p><i class="fa-solid fa-circle-minus"></i>  <%=item_order.quantity%> <i class="fa-solid fa-circle-plus"></i></p>
               </div>
-                <p><%= iteminfo.description %></p>
               <div class="order-category-name-price">
-                <h2><%= iteminfo.category %></h2>
                 <h6><%= (iteminfo.price * item_order.quantity).round(2) %> €</h6>
               </div>
             </div>
