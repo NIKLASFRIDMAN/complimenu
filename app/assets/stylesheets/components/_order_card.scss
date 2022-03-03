@@ -30,7 +30,7 @@
   flex: 1;
   .title-plus-minus {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
    h2 {
      flex: 1
    }
@@ -38,23 +38,23 @@
      color: black;
    }
    p {
-     font-size: 20px;
+     font-size: 16px;
    }
    i {
-     font-size: 20px;
+     font-size: 16px;
    }
   }
 
   .order-category-name-price {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
   }
   .fa-solid {
     color: $main-color;
   }
   h6 {
     color: #3F4447;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     padding-left: 12px;
   }
