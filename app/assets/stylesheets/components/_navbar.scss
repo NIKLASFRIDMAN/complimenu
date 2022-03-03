@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $light-dark-gray;
+  background: $sub-main-color;
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -14,7 +14,7 @@
 }
 
 .logo {
-  color: #6B7379;
+  color: $main-color;
   font-family: 'Knewave', cursive;
   font-size: 24;
   float: none;
