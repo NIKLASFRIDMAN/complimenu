@@ -1,0 +1,19 @@
+
+<% if item_order.present? && item_order.quantity > 1 %>
+  <%= link_to item_order_path(item_order.id, quantity: -1), method: :patch,
+              data: {
+                dish_card_target: 'minusButton',
+                action: 'click->dish-card#minus'
+              } do %>
+    <i class="fa-solid fa-circle-minus"></i>
+  <% end %>
+<% elsif item_order.present? && item_order.quantity == 1%>
+  <%= link_to item_order_path(item.id), method: :delete,
+              data: { dish_card_target: 'deleteButton',
+                action: 'click->dish-card#destroy'
+              } do %>
+    <i class="fa-solid fa-circle-minus"></i>
+  <% end %>
+<% else %>
+  <i class="fa-solid fa-circle-minus"></i>
+<% end %>

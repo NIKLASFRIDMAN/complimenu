@@ -1,16 +1,22 @@
-  <div class="dish-card">
-    <div class="dish-picture">
-      <p><i class="fa-regular fa-star"></i> 9.7</p>
-    </div>
-    <div class="dish-card-content">
-      <div class="title-plus-minus">
-        <h2>Detroit</h2>
-        <p><i class="fa-solid fa-circle-minus"></i> 1 <i class="fa-solid fa-circle-plus"></i></p>
-      </div>
-          <p>Tomato souce, garlic, orefani and fresh bazil</p>
-      <div class="category-name-price">
-        <h6>Pizza</h6>
-        <h6>76kr</h6>
-      </div>
-    </div>
+<div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
+  <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
+    <p><i class="fa-regular fa-star"></i> 9.7</p>
   </div>
+  <div class="dish-card-content">
+    <div class="title-plus-minus">
+      <h2><%= item.name %></h2>
+      <p>
+        <%# refactor!!! %>
+        <% item_order = ItemOrder.find_by(item_id: item.id, order_id: session[:order_id]) %>
+        <%# refactor until here %>
+        <%= render "item_orders/minus_button.html.erb", item_order: item_order, item: item %>
+        <span data-dish-card-target="quantity" id="quantity-<%= item.id %>">
+          <%= item_order.present? ? item_order.quantity : 0 %>
+        </span>
+        <%= render "item_orders/plus_button.html.erb", item_order: item_order, item: item %>
+      </p>
+    </div>
+    <p class="toggle-paragraph description" data-action="click->dish-card#revealDescription" data-dish-card-target="description"><%= item.description %></p>
+    <h6 class="price"><%= item.price %> €</h6>
+  </div>
+</div>

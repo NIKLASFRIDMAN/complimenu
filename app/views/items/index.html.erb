@@ -1,56 +1,11 @@
 <% @categories.each do |category| %>
   <div id="<%= category %>">
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
-   </div>
-    <% @items.where("category = '#{category}'").each do |item| %>
-      <div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
-          <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
-            <p><i class="fa-regular fa-star"></i> 9.7</p>
-          </div>
-          <div class="dish-card-content">
-            <div class="title-plus-minus">
-              <h2><%= item.name %></h2>
-              <p data-controller="update-quantity">
-                <%# refactor!!! %>
-                <% item_order = ItemOrder.find_by(item_id: item.id, order_id: session[:order_id]) %>
-                <%# refactor until here %>
-                <% if item_order.present? && item_order.quantity > 1 %>
-                  <%= link_to item_order_path(item_order.id, quantity: -1), method: :patch, remote: true,
-                              data: {
-                                update_quantity_target: 'button'
-                                # action: 'click->update-quantity#calculate'
-                              } do %>
-                    <i class="fa-solid fa-circle-minus"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to item_order_path(item.id), method: :delete, remote:true,
-                              data: { update_quantity_target: 'button' } do %>
-                    <i class="fa-solid fa-circle-minus"></i>
-                  <% end %>
-                <% end %>
-                <span data-update-quantity-target="quantity" id="quantity-<%= item.id %>">
-                  <%= item_order.present? ? item_order.quantity : 0 %>
-                </span>
-                <% if item_order.present? %>
-                  <%= link_to item_order_path(item_order.id, quantity: 1), method: :patch, remote: true,
-                              data: { update_quantity_target: 'button' } do %>
-                    <i class="fa-solid fa-circle-plus"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to item_item_orders_path(item), method: :post, remote: true,
-                              data: { update_quantity_target: 'button' } do %>
-                    <i class="fa-solid fa-circle-plus"></i>
-                  <% end %>
-                <% end %>
-              </p>
-            </div>
-            <p class="toggle-paragraph description" data-action="click->dish-card#revealDescription" data-dish-card-target="description"><%= item.description %></p>
-            <h6 class="price"><%= item.price %> €</h6>
-          </div>
-      </div>
-    <% end %>
+  </div>
+  <% @items.where("category = '#{category}'").each do |item| %>
+    <%= render "dish_card", item: item %>
+  <% end %>
 <% end %>
 
-  <%= render "shared/basket_button" %>
-  <div class="button-background-colour">
-  </div>
+<%= render "shared/basket_button" %>
+<div class="button-background-colour"></div>
