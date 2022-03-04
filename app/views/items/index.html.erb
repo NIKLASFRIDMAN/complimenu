@@ -3,7 +3,7 @@
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
   </div>
   <% items.each do |item| %>
-    <%= render "dish_card", item: item %>
+    <%= render "dish_card", item: item[:item], item_order: item[:item_order] %>
   <% end %>
 <% end %>
 
