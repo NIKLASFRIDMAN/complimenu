@@ -5,7 +5,10 @@ class ItemsController < ApplicationController
     if params[:format]
       redirect_to "#{items_path}##{params[:format].downcase}"
     end
-    @items = Item.all
     @categories = Item.distinct.pluck(:category)
+    @catitems = {}
+    @categories.each do |category|
+      @catitems[category.to_sym] = Item.where("category = '#{category}'")
+    end
   end
 end
