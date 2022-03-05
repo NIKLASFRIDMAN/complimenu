@@ -3,11 +3,8 @@ class ItemsController < ApplicationController
 
   def index
     redirect_to "#{items_path}##{params[:format].downcase}" if params[:format]
-    @category_items = Item.joins(:item_orders)
-                          .group_by { |item| item.category }
+    @category_items = Item.grouped_by_category
 
-    @item_orders = ItemOrder.joins(:item)
-                            .where(order_id: session[:order_id])
-                            .group_by { |item_order| item_order.item.id }
+    @item_orders = ItemOrder.grouped_by_item(session[:order_id])
   end
 end
