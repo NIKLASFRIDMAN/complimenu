@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
     redirect_to "#{table_items_path(@table)}##{params[:format].downcase}" if params[:format]
     @category_items = Item.grouped_by_category
     @item_orders = ItemOrder.grouped_by_item(session[:order_id])
+    @total_items = total_items(@item_orders)
   end
 
   private
@@ -15,8 +16,10 @@ class ItemsController < ApplicationController
 
   def total_items(itemorders)
     total_items = 0
-    itemorders.each do |itemorder|
-      total_items += itemorder.quantity
+    itemorders.each do |_item, itemorder_item|
+      itemorder_item.each do |itemorder|
+        total_items += itemorder.quantity
+      end
     end
     return total_items
   end
