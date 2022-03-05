@@ -1,3 +1,3 @@
 class Order < ApplicationRecord
-  has_many :item_order, :reviews, dependent: :destroy
+  has_many :item_order, dependent: :destroy
 end
