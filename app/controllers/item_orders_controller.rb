@@ -8,7 +8,7 @@ class ItemOrdersController < ApplicationController
     @item_order.order_id = @order.id
     @item_order.save
     respond_to do |format|
-      format.html { redirect_to table_items_path }
+      format.html { redirect_to table_items_path(@table) }
       format.json { render :update }
     end
   end
@@ -28,7 +28,7 @@ class ItemOrdersController < ApplicationController
     @item_order.quantity += params[:quantity].to_i
     respond_to do |format|
       @item_order.save
-      format.html { redirect_to items_path }
+      format.html { redirect_to table_items_path(@table) }
       format.json { render :update }
     end
   end

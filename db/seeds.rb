@@ -47,8 +47,6 @@ puts "Starting seed"
 end
 puts "Done seeding items"
 
-
-
 puts "Clearing item_orders db"
 ItemOrder.destroy_all
 20.times do |counter|

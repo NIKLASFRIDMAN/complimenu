@@ -11,7 +11,6 @@ class TablesController < ApplicationController
       session[:order_id] = @order.id
     end
     @categories = Item.distinct.pluck(:category)
-    find_table
   end
 
   private
