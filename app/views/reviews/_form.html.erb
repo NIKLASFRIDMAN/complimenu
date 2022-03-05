@@ -1,0 +1,5 @@
+  <%= simple_form_for [item, review], data: { leave_review_target: "form", action: 'submit->leave-review#send'} do |f| %>
+    <%= f.input :upvote, label: "Rate your experience" %>
+    <%= f.input :downvote, label: "Rate your experience" %>
+    <%= f.submit "Send your review" %>
+  <% end %>

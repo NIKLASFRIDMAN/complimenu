@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
-    skip_before_action :authenticate_user!, only: [ :new, :create ]
-    before_action :find_order, only: [:new, :create]
-
+  skip_before_action :authenticate_user!, only: [ :new, :create ]
+  before_action :find_order, only: [:new, :create]
 
   def new
     @review = Review.new
@@ -13,11 +12,14 @@ class ReviewsController < ApplicationController
     item = item_order.item
     @review.order = @order
     @review.item = item
-    if @review.save
-      redirect_to root_path
-    else
-      flash[:alert] = "Something went wrong."
-      render :new
+    respond_to do |format|
+      if @review.save
+        # format.html { redirect_to root_path }
+        format.json
+      else
+        # format.html { render :new }
+        format.json
+      end
     end
   end
 
