@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     categories = Item.distinct.pluck(:category)
     categories.each do |category|
       
-      item_order = ItemOrder.joins(:item).where(item: {category: category})
+      item_order = ItemOrder.includes(:item).joins(:item).where(item: {category: category})
       @catitems[category.to_sym] = item_order
       # items_cat = items.select { |i| i.category = category }
       # itemorders = ItemOrder.all
