@@ -4,14 +4,13 @@ class ItemsController < ApplicationController
   def index
     redirect_to "#{items_path}##{params[:format].downcase}" if params[:format]
     @catitems = {}
-    items = Item.all
     categories = Item.distinct.pluck(:category)
     categories.each do |category|
       
       item_order = ItemOrder.includes(:item)
                             .joins(:item)
                             .where(item: {category: category})
-                            
+
       @catitems[category.to_sym] = item_order
       # items_cat = items.select { |i| i.category = category }
       # itemorders = ItemOrder.all
