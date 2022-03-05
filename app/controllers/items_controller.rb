@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     redirect_to "#{items_path}##{params[:format].downcase}" if params[:format]
     @catitems = {}
     items = Item.all
-    items.map(&:category).uniq.each do |category|
+    Item.distinct.pluck(:category).each do |category|
       items_cat = items.select { |i| i.category = category }
       itemorders = ItemOrder.all
       @catitems[category.to_sym] = []
