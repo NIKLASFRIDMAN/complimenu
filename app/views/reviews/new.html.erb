@@ -1,0 +1,17 @@
+
+  <%= render 'shared/review_page' %>
+  <% @order.item_orders.each do |item_order| %>
+        <div class="order-card">
+            <div class="order-card-content">
+              <div class="title-plus-minus">
+                <h2><%= item_order.item.name %></h2>
+                <%= simple_form_for [@item, @review]  do |f| %>
+                <%= f.input :upvote, label: "Rate your experience" %>
+                <%= f.input :downvote, label: "Rate your experience" %>
+                <%= f.submit "Send your review" %>
+                 <% end %>
+              </div>
+            </div>
+        </div>
+        <% end %>
+  </div>
