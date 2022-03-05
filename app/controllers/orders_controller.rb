@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:checkout, :show, :waiter]
+  before_action :find_table
   before_action :find_order, :calculate_total, only: [:show, :checkout]
 
   def show; end
@@ -20,6 +21,10 @@ class OrdersController < ApplicationController
       @all_items_total_price += (item_order.item.price * item_order.quantity)
     end
     @all_items_total_price = @all_items_total_price.round(2)
+  end
+
+  def find_table
+    @table = Table.find(params[:table_id])
   end
 
 end

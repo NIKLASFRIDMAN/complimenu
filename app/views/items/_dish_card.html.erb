@@ -6,11 +6,11 @@
     <div class="title-plus-minus">
       <h2><%= item.name %></h2>
       <p>
-        <%= render "item_orders/minus_button.html.erb", item_order: item_order, item: item %>
+        <%= render "item_orders/minus_button.html.erb", table: @table, item_order: item_order, item: item %>
         <span data-dish-card-target="quantity" id="quantity-<%= item.id %>">
           <%= item_order.present? ? item_order.quantity : 0 %>
         </span>
-        <%= render "item_orders/plus_button.html.erb", item_order: item_order, item: item %>
+        <%= render "item_orders/plus_button.html.erb", table: @table, item_order: item_order, item: item %>
       </p>
     </div>
     <p class="toggle-paragraph description" data-action="click->dish-card#revealDescription" data-dish-card-target="description"><%= item.description %></p>
