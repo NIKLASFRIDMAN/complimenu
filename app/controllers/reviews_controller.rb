@@ -14,11 +14,9 @@ class ReviewsController < ApplicationController
     @review.item = item
     respond_to do |format|
       if @review.save
-        # format.html { redirect_to root_path }
         format.json
       else
-        # format.html { render :new }
-        format.json
+        render :new
       end
     end
   end
