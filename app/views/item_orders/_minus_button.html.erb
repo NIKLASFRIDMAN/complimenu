@@ -8,7 +8,7 @@
     <i class="fa-solid fa-circle-minus"></i>
   <% end %>
 <% elsif item_order.present? && item_order.quantity == 1%>
-  <%= link_to item_order_path(item_order.item.id), method: :delete,
+  <%= link_to item_order_path(item.id), method: :delete,
               data: { dish_card_target: 'deleteButton',
                 action: 'click->dish-card#destroy'
               } do %>

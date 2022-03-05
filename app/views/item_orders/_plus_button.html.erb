@@ -7,7 +7,7 @@
     <i class="fa-solid fa-circle-plus"></i>
   <% end %>
 <% else %>
-  <%= link_to item_item_orders_path(item_order.item), method: :post,
+  <%= link_to item_item_orders_path(item), method: :post,
               data: {
                 dish_card_target: 'newButton',
                 action: 'click->dish-card#create'
