@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @order = Order.find(session[:order_id])
     else
       @order = Order.new
+      @order.table = Table.first
       @order.save!
       session[:order_id] = @order.id
     end
