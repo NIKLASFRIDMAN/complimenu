@@ -1,5 +1,8 @@
 class Item < ApplicationRecord
+  # ASSOCIATIONS
   has_many :item_orders, dependent: :destroy
+
+  # VALIDATIONS
   validates :name, presence: true
   validates :category, presence: true
 

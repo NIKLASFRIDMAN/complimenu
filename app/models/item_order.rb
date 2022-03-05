@@ -1,4 +1,5 @@
 class ItemOrder < ApplicationRecord
+  # ASSOCIATIONS
   belongs_to :item
   belongs_to :order
   
