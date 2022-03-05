@@ -3,9 +3,9 @@
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
   </div>
   <% items.each do |item| %>
-    <%= render "dish_card", item: item, item_order: @item_orders[item.id] && @item_orders[item.id].first %>
+    <%= render "dish_card", table: @table, item: item, item_order: @item_orders[item.id] && @item_orders[item.id].first %>
   <% end %>
 <% end %>
 
-<%= render "shared/basket_button" %>
+<%= render "shared/basket_button", table: @table %>
 <div class="button-background-colour"></div>
