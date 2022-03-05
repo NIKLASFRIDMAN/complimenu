@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require "i18n"
 
 CATEGORY_ARRAY = ["Appetizer","Pizza", "Beverage","Dessert","Vegan", "Wine"]
 
@@ -21,7 +22,28 @@ puts "Starting seed"
                   description: food.description,
                   category: CATEGORY_ARRAY.sample,
                   price: rand(10.00..100.00).round(2),
-                  image_url: URI.open("https://source.unsplash.com/random/?food,#{dish}").base_uri)
+                  image_url: URI.open("https://source.unsplash.com/random/?food,#{I18n.transliterate(dish)}").base_uri)
   item.save!
 end
 puts "Done seeding items"
+
+puts "Clearing orders db"
+Order.destroy_all
+3.times do |counter|
+  order = Order.new
+  puts "Seeding #{counter} order"
+  order.save!
+end
+puts "Done seeding orders"
+
+puts "Clearing item_orders db"
+ItemOrder.destroy_all
+20.times do |counter|
+  order_id = Order.order('RANDOM()').first.id
+  item_id = Item.order('RANDOM()').first.id
+  quantity = rand(1..10)
+  item_order = ItemOrder.new(order_id: order_id, item_id: item_id, quantity: quantity)
+  puts "Seeding #{counter} item_order"
+  item_order.save!
+end
+puts "Done seeding item_orders"
