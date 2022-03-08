@@ -6,11 +6,17 @@ class TablesController < ApplicationController
       @order = Order.find(session[:order_id])
     else
       @order = Order.new
-      @order.table = Table.find(params[:id])
+      @order.table = find_table
       @order.save!
       session[:order_id] = @order.id
     end
     @categories = Item.distinct.pluck(:category)
+    unless current_user
+      @user = User.new
+      @user.table = @table
+      @user.save
+      sign_in(:user, @user)
+    end
   end
 
   private
