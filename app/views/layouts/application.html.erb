@@ -16,7 +16,7 @@
   <body>
     <%= render 'shared/flashes' %>
     <% unless request.path == root_path %>
-      <% unless request.path == table_checkout_path(@table) || request.path == table_order_summary_path(@table) || request.path == '/qrcode' %>
+      <% unless request.path == table_checkout_path(@table) || request.path == table_order_summary_path(@table) || request.path == '/qrcode'  %>
           <%= render 'shared/navbar' %>
       <% end %>
     <% end %>

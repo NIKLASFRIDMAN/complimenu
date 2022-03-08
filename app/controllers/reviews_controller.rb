@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :new, :create ]
   before_action :find_order, only: [:new, :create]
+  before_action :find_table
 
   def new
     @review = Review.new
@@ -30,4 +31,9 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:upvote, :downvote)
   end
+
+   def find_table
+    @table = Table.find(params[:table_id])
+  end
+
 end

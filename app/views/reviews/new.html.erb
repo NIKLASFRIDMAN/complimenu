@@ -7,7 +7,7 @@
               <div class="order-card-content">
                 <div class="title-plus-minus">
                   <h2><%= item_order.item.name %></h2>
-                    <%= render 'reviews/form', item: @item, review: @review %>
+                    <%= render partial: 'reviews/form' %>
                 </div>
               </div>
           </div>
