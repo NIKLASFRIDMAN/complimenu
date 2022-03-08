@@ -1,0 +1,16 @@
+
+  <%= render 'shared/review_page' %>
+
+  <div data-controller="leave-review">
+    <% @order.item_orders.each do |item_order| %>
+          <div class="order-card">
+              <div class="order-card-content">
+                <div class="title-plus-minus">
+                  <h2><%= item_order.item.name %></h2>
+                    <%= render 'reviews/form', item: @item, review: @review %>
+                </div>
+              </div>
+          </div>
+          <% end %>
+    </div>
+  </div>
