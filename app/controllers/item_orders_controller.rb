@@ -2,6 +2,7 @@ class ItemOrdersController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :find_order, only: [:create]
   before_action :find_table
+
   def create
     @item_order = ItemOrder.new(quantity: 1)
     @item_order.item_id = params[:item_id]
