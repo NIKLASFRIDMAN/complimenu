@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/card', to:'orders#card'
     get '/card-success', to:'orders#card_success'
   end
+  
 
   resources :reviews, only: [:new, :create]
 

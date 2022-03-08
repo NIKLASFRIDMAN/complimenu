@@ -27,8 +27,8 @@ class OrdersController < ApplicationController
     #quantity: 1
     }],
     mode: 'payment',
-    success_url: "http://localhost:3000" + '/card-success',
-    cancel_url: "http://localhost:3000/" + '/cancel.html',
+    success_url:  ENV["BASE_URL"] + "/tables/"+ params[:table_id] + "/card-success",
+    cancel_url:  ENV["BASE_URL"] + "/card-cancel",
     )
   redirect_to session.url
   
