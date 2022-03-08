@@ -5,17 +5,7 @@
   </div>
   <div>
     <% @order.item_orders.each do |item_order| %>
-      <div class="order-card">
-          <div class="order-card-content">
-            <div class="title-plus-minus">
-              <h2><%= item_order.item.name %></h2>
-              <p><i class="fa-solid fa-circle-minus"></i>  <%=item_order.quantity%> <i class="fa-solid fa-circle-plus"></i></p>
-            </div>
-            <div class="order-category-name-price">
-              <h6><%= (item_order.item.price * item_order.quantity).round(2) %> €</h6>
-            </div>
-          </div>
-      </div>
+      <%= render 'order_card', item_order: item_order, table: @table %>
     <% end %>
   </div>
 
@@ -27,7 +17,7 @@
 
   <section class="checkout-footer m-4">
     <h2><strong>Total:</strong></h2>
-    <h2><strong><%= @all_items_total_price %> €</strong></h2>
+    <h2 id="total-price"><strong><%= @all_items_total_price %> €</strong></h2>
   </section>
 
 </div>
