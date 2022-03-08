@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#qrcode'
-
   resources :tables, only: [:show] do
     resources :items, only: [:index] do
       resources :item_orders, only: [:create]
@@ -10,7 +9,15 @@ Rails.application.routes.draw do
     get "/ordersummary", to: "orders#show", as: "order_summary"
     get '/checkout', to: 'orders#checkout'
     get '/waiter', to: 'orders#waiter'
+    get '/card', to:'orders#card'
+    get '/card-success', to:'orders#card_success'
   end
+
+  resources :reviews, only: [:new, :create]
+
+  get '/review', to: 'reviews#new', as: "review"
+  get '/review', to: 'reviews#create'
+
   # TODO namespace for routing
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

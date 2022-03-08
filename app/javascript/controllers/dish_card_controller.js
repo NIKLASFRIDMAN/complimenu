@@ -5,11 +5,8 @@ export default class extends Controller {
 
   static targets = ["description", "card", "minusButton", "plusButton", "deleteButton", "newButton"]
   connect() {
-    // console.log(this.element);
-    // console.log(this.plusButtonTarget);
-    // console.log(this.minusButtonTarget);
-    // console.log(this.quantityTarget);
   }
+
   minus(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -22,6 +19,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.element.outerHTML = data.newCardHTML;
+        this.updateBasket(-1)
       })
   }
 
@@ -36,7 +34,9 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.element.outerHTML = data.newCardHTML;
+        this.updateBasket(-1)
       })
+
   }
 
   create(event) {
@@ -50,6 +50,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.element.outerHTML = data.newCardHTML;
+        this.updateBasket(1);
       })
   }
 
@@ -65,6 +66,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.element.outerHTML = data.newCardHTML;
+        this.updateBasket(1);
       })
   }
 
@@ -79,5 +81,10 @@ export default class extends Controller {
       this.cardTarget.style.backgroundColor = "";
       this.descriptionTarget.style.paddingRight = "10px";
     }
+  }
+
+  updateBasket(quantity) {
+    const basket = document.getElementById("basket-quantity")
+    basket.innerHTML = parseInt(basket.innerHTML) + quantity
   }
 }

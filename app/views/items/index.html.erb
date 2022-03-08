@@ -6,5 +6,7 @@
     <%= render "dish_card", table: @table, item: item, item_order: @item_orders[item.id] && @item_orders[item.id].first %>
   <% end %>
 <% end %>
-<%= render "shared/basket_button", table: @table %>
+
+<%= render "shared/basket_button", table: @table, quantity: @total_items %>
+
 <div class="button-background-colour"></div>
