@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2022_03_05_104230) do
     t.float "total_price", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "table_id", null: false
+    t.index ["table_id"], name: "index_orders_on_table_id"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -63,12 +70,16 @@ ActiveRecord::Schema.define(version: 2022_03_05_104230) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "table_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["table_id"], name: "index_users_on_table_id"
   end
 
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
   add_foreign_key "reviews", "items"
   add_foreign_key "reviews", "orders"
+  add_foreign_key "orders", "tables"
+  add_foreign_key "users", "tables"
 end

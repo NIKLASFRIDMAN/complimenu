@@ -1,17 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :qrcode ]
-
-  def home
-    if session[:order_id]
-      @order = Order.find(session[:order_id])
-    else
-      @order = Order.new
-      @order.save!
-      session[:order_id] = @order.id
-    end
-     @categories = Item.distinct.pluck(:category)
-  end
+  skip_before_action :authenticate_user!, only: [ :qrcode ]
 
   def qrcode
+    @table = Table.first
+    @table.save!
   end
 end
