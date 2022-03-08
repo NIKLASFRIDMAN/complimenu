@@ -10,6 +10,26 @@ require "i18n"
 
 CATEGORY_ARRAY = ["Appetizer","Pizza", "Beverage","Dessert","Vegan", "Wine"]
 
+puts "Clearing table table"
+Table.destroy_all
+
+5.times do |counter|
+  table = Table.new
+  table.save!
+  puts "Seeding #{counter} table"
+end
+puts "Done with tables table"
+
+puts "Clearing orders db"
+Order.destroy_all
+3.times do |counter|
+  order = Order.new
+  order.table = Table.order('RANDOM()').first
+  puts "Seeding #{counter} order"
+  order.save!
+end
+puts "Done seeding orders"
+
 puts "Clearing Items db"
 Item.destroy_all
 puts "Starting seed"
@@ -23,18 +43,9 @@ puts "Starting seed"
                   category: CATEGORY_ARRAY.sample,
                   price: rand(10.00..100.00).round(2),
                   image_url: URI.open("https://source.unsplash.com/random/?food,#{I18n.transliterate(dish)}").base_uri)
-  item.save!
+  item.save
 end
 puts "Done seeding items"
-
-puts "Clearing orders db"
-Order.destroy_all
-3.times do |counter|
-  order = Order.new
-  puts "Seeding #{counter} order"
-  order.save!
-end
-puts "Done seeding orders"
 
 puts "Clearing item_orders db"
 ItemOrder.destroy_all

@@ -1,5 +1,5 @@
 <% if item_order.present? %>
-  <%= link_to item_order_path(item_order.id, quantity: 1), method: :patch,
+  <%= link_to table_item_order_path(table_id: @table, id: item_order.id, quantity: 1), method: :patch,
               data: {
                 dish_card_target: 'plusButton',
                 action: 'click->dish-card#plus'
@@ -7,7 +7,7 @@
     <i class="fa-solid fa-circle-plus"></i>
   <% end %>
 <% else %>
-  <%= link_to item_item_orders_path(item), method: :post,
+  <%= link_to table_item_item_orders_path(table_id: @table, item_id: item), method: :post,
               data: {
                 dish_card_target: 'newButton',
                 action: 'click->dish-card#create'

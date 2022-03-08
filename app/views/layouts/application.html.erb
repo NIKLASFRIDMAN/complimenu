@@ -15,8 +15,10 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <% unless request.path == '/checkout' || request.path == '/ordersummary' || request.path == '/qrcode' %>
-         <%= render 'shared/navbar' %>
+    <% unless request.path == root_path %>
+      <% unless request.path == table_checkout_path(@table) || request.path == table_order_summary_path(@table) || request.path == '/qrcode' %>
+          <%= render 'shared/navbar' %>
+      <% end %>
     <% end %>
     <%# <%= render 'items/dish_card.html.erb' %>
     <%= yield %>
