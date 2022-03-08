@@ -43,11 +43,9 @@ puts "Starting seed"
                   category: CATEGORY_ARRAY.sample,
                   price: rand(10.00..100.00).round(2),
                   image_url: URI.open("https://source.unsplash.com/random/?food,#{I18n.transliterate(dish)}").base_uri)
-  item.save!
+  item.save
 end
 puts "Done seeding items"
-
-
 
 puts "Clearing item_orders db"
 ItemOrder.destroy_all
