@@ -1,9 +1,9 @@
-<div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
+<div class="dish-card" data-controller="dish-card" data-dish-card-target="card" >
   <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
     <p><i class="fa-regular fa-star"></i> 9.7</p>
   </div>
-  <div class="dish-card-content">
-    <div class="title-plus-minus">
+  <div class="dish-card-content" >
+    <div class="title-plus-minus" >
       <h2><%= item.name %></h2>
       <p>
         <%= render "item_orders/minus_button.html.erb", table: @table, item_order: item_order, item: item %>
