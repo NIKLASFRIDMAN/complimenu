@@ -1,0 +1,16 @@
+.order-show-footer {
+  position: fixed;
+  bottom: 0px;
+  right: 0%;
+  left: 0%;
+  background: $sub-main-color;
+  border-top: $gold-colour solid 2px;
+  opacity: 75%;
+  .checkout-footer h2{
+      font-size: 20px;
+
+  }
+}
+.order-show-wrapper {
+    padding-bottom: 200px;
+}
