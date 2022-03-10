@@ -88,7 +88,7 @@ export default class extends Controller {
     basket.innerHTML = parseInt(basket.innerHTML) + quantity
     basket.animate([
       { transform: 'translate(0px,0px)' },
-      { transform: 'translate(0px,-4px)' }
+      { transform: 'translate(0px,-6px)' }
     ], 200)
   }
 }
