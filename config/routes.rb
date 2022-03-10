@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     get '/waiter', to: 'orders#waiter'
     get '/card', to:'orders#card'
     get '/card-success', to:'orders#card_success'
+    resources :reviews, only: [:new, :create]
+    get '/review', to: 'reviews#new', as: "review"
+    get '/review', to: 'reviews#create'
   end
 
-  resources :reviews, only: [:new, :create]
 
-  get '/review', to: 'reviews#new', as: "review"
-  get '/review', to: 'reviews#create'
 
   # TODO namespace for routing
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
