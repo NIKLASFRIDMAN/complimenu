@@ -1,13 +1,37 @@
- <div class="order-card">
-    <div class="order-card-content">
-      <div class="title-plus-minus">
-        <h2>Detroit</h2>
-        <p><i class="fa-solid fa-circle-minus"></i> 1 <i class="fa-solid fa-circle-plus"></i></p>
-      </div>
-          <p>Tomato souce, garlic, orefani and fresh bazil</p>
-      <div class="order-category-name-price">
-        <h6>Pizza</h6>
-        <h6>76kr</h6>
-      </div>
+<div class="order-card" data-controller="order-card">
+  <div class="order-card-content">
+    <div class="title-plus-minus">
+      <h2><%= item_order.item.name %></h2>
+      <p>
+        <% if item_order.present? && item_order.quantity > 1 %>
+          <%= link_to table_item_order_path(table_id: table, id: item_order.id, quantity: -1), method: :patch,
+                      data: {
+                        order_card_target: 'minusButton',
+                        action: 'click->order-card#minus'
+                      } do %>
+            <i class="fa-solid fa-circle-minus"></i>
+          <% end %>
+        <% else %>
+          <%= link_to table_item_order_path(table_id: table, id: item_order.id), method: :delete,
+                      data: {
+                        order_card_target: 'deleteButton',
+                        action: 'click->order-card#destroy'
+                      } do %>
+            <i class="fa-solid fa-circle-minus"></i>
+          <% end %>
+        <% end %>
+        <%=item_order.quantity%>
+        <%= link_to table_item_order_path(table_id: table, id: item_order.id, quantity: 1), method: :patch,
+                    data: {
+                      order_card_target: 'plusButton',
+                      action: 'click->order-card#plus'
+                    } do %>
+          <i class="fa-solid fa-circle-plus"></i>
+        <% end %>
+      </p>
+    </div>
+    <div class="order-category-name-price">
+      <h6><span class="item-order-price"><%= (item_order.item.price * item_order.quantity).round(2) %></span> €</h6>
     </div>
   </div>
+</div>

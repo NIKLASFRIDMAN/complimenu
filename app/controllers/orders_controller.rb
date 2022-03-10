@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def waiter; end
 
-  def card 
+  def card
     session = Stripe::Checkout::Session.create(
     line_items: [{
     price_data: {
@@ -31,11 +31,11 @@ class OrdersController < ApplicationController
     cancel_url:  request.base_url + "/card-cancel",
     )
     redirect_to session.url
+
   
-  
+
+
   end
-
-
 
   private
 
