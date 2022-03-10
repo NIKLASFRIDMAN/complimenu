@@ -46,11 +46,6 @@ ActiveRecord::Schema.define(version: 2022_03_05_104230) do
     t.index ["table_id"], name: "index_orders_on_table_id"
   end
 
-  create_table "tables", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "upvote"
     t.integer "downvote"
@@ -60,6 +55,11 @@ ActiveRecord::Schema.define(version: 2022_03_05_104230) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_reviews_on_item_id"
     t.index ["order_id"], name: "index_reviews_on_order_id"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2022_03_05_104230) do
 
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
+  add_foreign_key "orders", "tables"
   add_foreign_key "reviews", "items"
   add_foreign_key "reviews", "orders"
-  add_foreign_key "orders", "tables"
   add_foreign_key "users", "tables"
 end
