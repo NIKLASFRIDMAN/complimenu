@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper order-show-wrapper">
   <div class="">
     <%= render 'shared/navbar' %>
     <%= render 'shared/summary_page' %>
@@ -7,6 +7,20 @@
     <% @order.item_orders.each do |item_order| %>
       <%= render 'order_card', item_order: item_order, table: @table %>
     <% end %>
+  
+  </div>
+  <div class="order-show-footer">
+  <section class="checkout-footer m-4">
+    <h2><strong>Total:</strong></h2>
+    <h2><strong><%= @all_items_total_price %> €</strong></h2>
+  </section>
+
+
+   <div class="m-4">
+      <section class="payment-btn-container">
+        <%= link_to "Proceed to payment", table_checkout_path, class: 'payment-buttons'%>
+      </section>
+    </div>
   </div>
 
   <div class="m-4">
@@ -19,5 +33,6 @@
     <h2><strong>Total:</strong></h2>
     <h2 id="total-price"><strong><%= @all_items_total_price %> €</strong></h2>
   </section>
+
 
 </div>

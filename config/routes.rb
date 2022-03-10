@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/review', to: 'reviews#new', as: "review"
     get '/review', to: 'reviews#create'
   end
+  
 
 
 

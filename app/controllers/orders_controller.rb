@@ -24,13 +24,17 @@ class OrdersController < ApplicationController
     #name:"Basket",
     #amount_decimal:@all_items_total_price,
     #currency: 'eur',
-    #quantity: 1
+    quantity: 1
     }],
     mode: 'payment',
-    success_url: "http://localhost:3000" + '/card-success',
-    cancel_url: "http://localhost:3000/" + '/cancel.html',
+    success_url: request.base_url + "/tables/"+ params[:table_id] + "/card-success",
+    cancel_url:  request.base_url + "/card-cancel",
     )
     redirect_to session.url
+
+  
+
+
   end
 
   private
