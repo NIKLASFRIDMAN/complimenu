@@ -1,6 +1,10 @@
 <div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
   <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
-    <p><i class="fa-regular fa-star"></i> 9.7</p>
+    <% total_reviews = 0 %>
+    <% item.reviews.each do |rev| %>
+      <% total_reviews += rev.upvote %>
+    <% end %>
+    <p><%= total_reviews %> <i class="fa-regular fa-star"></i></p>
   </div>
   <div class="dish-card-content">
     <div class="title-plus-minus">

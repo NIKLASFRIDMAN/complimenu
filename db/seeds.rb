@@ -62,7 +62,7 @@ puts "Done seeding item_orders"
 Review.destroy_all
 50.times do |counter|
   review = Review.new(item_id: rand(1..30), order_id: rand(1..3), upvote: rand(1..5))
-  puts "Seeding #{counter} item_order"
+  puts "Seeding #{counter} review"
   review.save!
 end
 puts "Done seeding reviews"
