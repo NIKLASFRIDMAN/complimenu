@@ -1,3 +1,4 @@
+<div data-controller="dish-card">
 <% @category_items.each do |category, items| %>
   <div id="<%= category %>">
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
@@ -10,3 +11,4 @@
 <%= render "shared/basket_button", table: @table, quantity: @total_items %>
 
 <div class="button-background-colour"></div>
+</div>

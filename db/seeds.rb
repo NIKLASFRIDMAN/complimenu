@@ -33,7 +33,7 @@ puts "Done seeding orders"
 puts "Clearing Items db"
 Item.destroy_all
 puts "Starting seed"
-30.times do |counter|
+20.times do |counter|
   food = Faker::Food
   dish = food.dish
   puts dish

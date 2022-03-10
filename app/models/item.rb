@@ -8,8 +8,7 @@ class Item < ApplicationRecord
 
   # SCOPES
   scope :grouped_by_category, -> {
-    joins(:item_orders)
-    .group_by { |item| item.category }
+    group_by { |item| item.category }
   }
 
 end
