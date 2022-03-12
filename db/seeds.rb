@@ -53,7 +53,7 @@ end
 puts "Done seeding item_orders"
 
 Review.destroy_all
-50.times do |counter|
+200.times do |counter|
   order_id = Order.order('RANDOM()').first.id
   item_id = Item.order('RANDOM()').first.id
   review = Review.new(item_id: item_id, order_id: order_id, upvote: rand(1..5))
