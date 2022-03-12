@@ -6,6 +6,25 @@ export default class extends Controller {
 
   static targets = ["items",  "description", "card", "minusButton", "plusButton", "deleteButton", "newButton"]
   connect() {
+    console.log("Hello from stimulus");
+    const itemsDiv = this.element;
+    const tableroomId = itemsDiv.dataset.tableroomId;
+    console.log(itemsDiv);
+    console.log(tableroomId)
+    consumer.subscriptions.create(
+      { channel: 'TableroomChannel', table_id: tableroomId },
+      {
+        // when you receive something
+        received(response) {
+          // update the DOM
+          const data = JSON.parse(response);
+          console.log(data)
+          const card = document.getElementById(data.cardId);
+          card.outerHTML = data.newCardHTML;
+          console.log(card);
+        }
+      }
+    )
   }
 
   minus(event) {
@@ -54,7 +73,7 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then(data => {
-        card.outerHTML = data.newCardHTML;
+        // card.outerHTML = data.newCardHTML;
         this.updateBasket(1);
       })
   }

@@ -2,7 +2,7 @@ require 'stripe'
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:checkout, :show, :waiter, :card, :card_success]
   before_action :find_order, :calculate_total, only: [:show, :checkout, :card]
-  before_action :find_table
+  before_action :find_table, :find_users
 
   def show; end
 
@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def waiter; end
 
-  def card 
+  def card
     session = Stripe::Checkout::Session.create(
     line_items: [{
     price_data: {
@@ -31,12 +31,16 @@ class OrdersController < ApplicationController
     cancel_url: "http://localhost:3000/" + '/cancel.html',
     )
   redirect_to session.url
-  
+
   end
 
 
 
   private
+
+  def find_users
+    @users = User.where(table_id: @table.id)
+  end
 
   def find_order
     @order = Order.find(session[:order_id])

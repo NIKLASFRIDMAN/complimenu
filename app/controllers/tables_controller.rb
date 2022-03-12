@@ -1,6 +1,6 @@
 class TablesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show ]
-  before_action :find_table
+  before_action :find_table, :find_users
   def show
     if session[:order_id]
       @order = Order.find(session[:order_id])
@@ -21,6 +21,9 @@ class TablesController < ApplicationController
 
   private
 
+  def find_users
+    @users = User.where(table_id: @table.id)
+  end
   def find_table
     @table = Table.find(params[:id])
   end

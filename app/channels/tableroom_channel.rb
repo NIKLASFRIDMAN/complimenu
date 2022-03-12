@@ -1,7 +1,7 @@
 class TableroomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    tableroom = Table.find(params[:table_id])
+    tableroom = Table.find params[:table_id]
     stream_for tableroom
   end
 

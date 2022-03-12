@@ -8,9 +8,14 @@ class ItemOrdersController < ApplicationController
     @item_order.item_id = params[:item_id]
     @item_order.order_id = @order.id
     @item_order.save
+    # @item = @item_order.item
+    TableroomChannel.broadcast_to(
+        @table,
+        render(:update)
+    )
     respond_to do |format|
       format.html { redirect_to table_items_path(@table) }
-      format.json { render :update }
+      format.json {  }
     end
   end
 

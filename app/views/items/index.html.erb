@@ -1,4 +1,4 @@
-<div data-controller="dish-card">
+<div data-controller="dish-card" data-tableroom-id="<%= @table.id %>">
 <% @category_items.each do |category, items| %>
   <div id="<%= category %>">
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>

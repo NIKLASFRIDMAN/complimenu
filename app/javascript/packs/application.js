@@ -7,7 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "controllers"
 
 Rails.start()
 Turbolinks.start()
@@ -29,3 +28,5 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
 });
+
+import "controllers"
