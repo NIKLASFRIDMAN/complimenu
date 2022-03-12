@@ -1,5 +1,5 @@
 <div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
-  <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
+  <div class="dish-picture" style="background-image: url('<%= asset_path(item.image_url) %>');" >
     <p><%= item.total_reviews %> <i class="fa-regular fa-star"></i> </p>
   </div>
   <div class="dish-card-content">
