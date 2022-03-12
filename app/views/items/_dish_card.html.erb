@@ -3,9 +3,9 @@
     <p><%= item.total_reviews %> <i class="fa-regular fa-star"></i> </p>
   </div>
   <div class="dish-card-content">
-    <div class="title-plus-minus">
+    <div class="title-plus-minus d-flex align-self-center">
       <h2><%= item.name %></h2>
-      <p>
+      <p class="d-flex align-self-center">
         <%= render "item_orders/minus_button.html.erb", table: @table, item_order: item_order, item: item %>
         <span data-dish-card-target="quantity" id="quantity-<%= item.id %>">
           <%= item_order.present? ? item_order.quantity : 0 %>

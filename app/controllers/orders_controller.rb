@@ -31,10 +31,6 @@ class OrdersController < ApplicationController
     cancel_url:  request.base_url + "/card-cancel",
     )
     redirect_to session.url
-
-  
-
-
   end
 
   private

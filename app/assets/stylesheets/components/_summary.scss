@@ -1,14 +1,14 @@
 .banner_summary_page{
-    background: $sub-main-color;
-    display:flex;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 65px 0px 0px 0px;
-    height: 108px;
-    h1{
-        color: $sub-sub-main-color;
-        padding-left: 12px;
-    }
+  background: $sub-main-color;
+  display:flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 65px 0px 0px 0px;
+  height: 108px;
+  h1{
+      color: $sub-sub-main-color;
+      padding-left: 12px;
+  }
 }
 
 .payment_total {

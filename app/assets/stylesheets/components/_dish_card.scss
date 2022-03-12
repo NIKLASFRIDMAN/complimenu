@@ -40,13 +40,15 @@
     margin-bottom: 10px;
     }
    h2 {
-     flex: 1
+     flex: 1;
+     padding-right: 8px;
    }
    .dish-content-desc {
      color: black;
    }
    span {
      font-size: 16px;
+     padding: 0px 6px;
    }
    i {
      font-size: 16px;

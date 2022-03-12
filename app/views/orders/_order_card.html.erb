@@ -2,7 +2,7 @@
   <div class="order-card-content">
     <div class="title-plus-minus">
       <h2><%= item_order.item.name %></h2>
-      <p>
+      <p class="d-flex align-self-center">
         <% if item_order.present? && item_order.quantity > 1 %>
           <%= link_to table_item_order_path(table_id: table, id: item_order.id, quantity: -1), method: :patch,
                       data: {
