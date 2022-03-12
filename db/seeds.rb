@@ -5,10 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
-require "i18n"
 
-CATEGORY_ARRAY = ["Appetizer","Pizza", "Beverage","Dessert","Vegan", "Wine"]
+require 'json'
 
 puts "Clearing table table"
 Table.destroy_all
@@ -33,18 +31,13 @@ puts "Done seeding orders"
 puts "Clearing Items db"
 Item.destroy_all
 puts "Starting seed"
-30.times do |counter|
-  food = Faker::Food
-  dish = food.dish
-  puts dish
-  puts "Seeding #{counter} dish"
-  item = Item.new(name: dish,
-                  description: food.description,
-                  category: CATEGORY_ARRAY.sample,
-                  price: rand(10.00..100.00).round(2),
-                  image_url: URI.open("https://source.unsplash.com/random/?food,#{I18n.transliterate(dish)}").base_uri)
-  item.save
+
+items = JSON.parse(File.read('db/seeds_items.json'))
+items.each do |item|
+  Item.create!(item)
+  puts "item created"
 end
+
 puts "Done seeding items"
 
 puts "Clearing item_orders db"
@@ -61,7 +54,9 @@ puts "Done seeding item_orders"
 
 Review.destroy_all
 50.times do |counter|
-  review = Review.new(item_id: rand(1..30), order_id: rand(1..3), upvote: rand(1..5))
+  order_id = Order.order('RANDOM()').first.id
+  item_id = Item.order('RANDOM()').first.id
+  review = Review.new(item_id: item_id, order_id: order_id, upvote: rand(1..5))
   puts "Seeding #{counter} review"
   review.save!
 end
