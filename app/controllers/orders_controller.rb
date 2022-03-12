@@ -1,8 +1,9 @@
 require 'stripe'
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:checkout, :show, :waiter, :card, :card_success]
-  before_action :find_order, :calculate_total, only: [:show, :checkout, :card]
-  before_action :find_table, :find_users
+  before_action :find_order, :find_table, :find_users
+  before_action :calculate_total, only: [:show, :checkout, :card]
+
 
   def show; end
 

@@ -8,6 +8,7 @@ class ItemOrdersController < ApplicationController
     @item_order.item_id = params[:item_id]
     @item_order.order_id = @order.id
     @item_order.save
+    @quantity = 1
     # @item = @item_order.item
     TableroomChannel.broadcast_to(
         @table,
@@ -15,27 +16,37 @@ class ItemOrdersController < ApplicationController
     )
     respond_to do |format|
       format.html { redirect_to table_items_path(@table) }
-      format.json {  }
+      format.json { }
     end
   end
 
   def destroy
-    item_order = ItemOrder.find_by(id: params[:id], order_id: session[:order_id])
+    item_order = ItemOrder.find_by(id: params[:id])
     @item = item_order.item
     item_order.destroy
+    @quantity = -1
+    TableroomChannel.broadcast_to(
+        @table,
+        render(:destroy)
+    )
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render :destroy }
+      format.json { }
     end
   end
 
   def update
     @item_order = ItemOrder.find(params[:id])
     @item_order.quantity += params[:quantity].to_i
+    @quantity = params[:quantity].to_i
+    @item_order.save
+    TableroomChannel.broadcast_to(
+      @table,
+      render(:update)
+    )
     respond_to do |format|
-      @item_order.save
       format.html { redirect_to table_items_path(@table) }
-      format.json { render :update }
+      format.json { }
     end
   end
 
