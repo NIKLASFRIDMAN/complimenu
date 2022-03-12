@@ -18,5 +18,4 @@ class Item < ApplicationRecord
     end
     total_review
   end
-
 end
