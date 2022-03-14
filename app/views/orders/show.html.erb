@@ -1,36 +1,27 @@
-<div class="wrapper">
+<div class="wrapper order-show-wrapper">
   <div class="">
     <%= render 'shared/navbar' %>
     <%= render 'shared/summary_page' %>
   </div>
   <div>
     <% @order.item_orders.each do |item_order| %>
-      <% @item = Item.where(id:item_order.item.id) %>
-        <% @item.each do |iteminfo| %>
-        <div class="order-card">
-            <div class="order-card-content">
-              <div class="title-plus-minus">
-                <h2><%= iteminfo.name %></h2>
-                <p><i class="fa-solid fa-circle-minus"></i>  <%=item_order.quantity%> <i class="fa-solid fa-circle-plus"></i></p>
-              </div>
-              <div class="order-category-name-price">
-                <h6><%= (iteminfo.price * item_order.quantity).round(2) %> €</h6>
-              </div>
-            </div>
-        </div>
-        <% end %>
+      <%= render 'order_card', item_order: item_order, table: @table %>
     <% end %>
+  
   </div>
-
-   <div class="m-4">
-      <section class="payment-btn-container">
-        <%= link_to "Proceed to payment", table_checkout_path, class: 'payment-buttons'%>
-      </section>
-    </div>
-
+  <div class="order-show-footer">
   <section class="checkout-footer m-4">
     <h2><strong>Total:</strong></h2>
     <h2><strong><%= @all_items_total_price %> €</strong></h2>
   </section>
 
+
+
+  <div class="m-4">
+    <section class="payment-btn-container">
+      <%= link_to "Proceed to payment", table_checkout_path, class: 'payment-buttons'%>
+    </section>
+  </div>
 </div>
+
+

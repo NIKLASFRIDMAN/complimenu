@@ -94,5 +94,9 @@ export default class extends Controller {
   updateBasket(quantity) {
     const basket = document.getElementById("basket-quantity")
     basket.innerHTML = parseInt(basket.innerHTML) + quantity
+    basket.animate([
+      { transform: 'translate(0px,0px)' },
+      { transform: 'translate(0px,-6px)' }
+    ], 200)
   }
 }

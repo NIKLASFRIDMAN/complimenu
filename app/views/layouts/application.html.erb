@@ -11,12 +11,22 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <%= favicon_link_tag %>
+
+    <style>
+    .category-container:last-child .dish-card:last-child {
+      margin-bottom: 60px;
+    }
+
+    </style>
+
   </head>
 
   <body>
     <%= render 'shared/flashes' %>
     <% unless request.path == root_path %>
-      <% unless request.path == table_checkout_path(@table) || request.path == table_order_summary_path(@table) || request.path == '/qrcode' %>
+      <% unless request.path == table_checkout_path(@table) || request.path == table_order_summary_path(@table) || request.path == '/qrcode'  %>
           <%= render 'shared/navbar' %>
       <% end %>
     <% end %>

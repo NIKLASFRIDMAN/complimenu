@@ -1,12 +1,17 @@
-<div data-controller="dish-card" data-tableroom-id="<%= @table.id %>">
+<div class="dish-main-container" data-controller="dish-card" data-tableroom-id="<%= @table.id %>">
 <% @category_items.each do |category, items| %>
+<div class="category-container">
   <div id="<%= category %>">
     <h1 id="<%= category.downcase %>" class="h1-dish-card"><%=category.capitalize%></h1>
   </div>
+  <div class="dish-card-container">
   <% items.each do |item| %>
     <%= render "dish_card", table: @table, item: item, item_order: @item_orders[item.id] && @item_orders[item.id].first %>
   <% end %>
+  </div>
+</div>
 <% end %>
+</div>
 
 <%= render "shared/basket_button", table: @table, quantity: @total_items %>
 

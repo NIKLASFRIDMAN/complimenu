@@ -4,7 +4,7 @@
                 dish_card_target: 'plusButton',
                 action: 'click->dish-card#plus'
               } do %>
-    <i class="fa-solid fa-circle-plus"></i>
+    <i class="fa-solid fa-circle-plus" id="plus-minus-button"></i>
   <% end %>
 <% else %>
   <%= link_to table_item_item_orders_path(table_id: @table, item_id: item), id: item.id, method: :post,
@@ -12,6 +12,6 @@
                 dish_card_target: 'newButton',
                 action: 'click->dish-card#create'
               } do %>
-    <i class="fa-solid fa-circle-plus"></i>
+    <i class="fa-solid fa-circle-plus" id="plus-minus-button"></i>
   <% end %>
 <% end %>

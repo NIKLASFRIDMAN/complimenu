@@ -11,4 +11,11 @@ class Item < ApplicationRecord
     group_by { |item| item.category }
   }
 
+  def total_reviews
+    total_review = 0
+    self.reviews.each do |review|
+      total_review += review.upvote if review.upvote.present?
+    end
+    total_review
+  end
 end
