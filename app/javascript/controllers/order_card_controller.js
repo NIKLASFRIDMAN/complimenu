@@ -7,7 +7,6 @@ export default class extends Controller {
   static targets = ["minusButton", "plusButton", "deleteButton", "card"]
   connect() {
    const tableroomId = this.element.dataset.tableroomId;
-   const card = this.cardTarget
     consumer.subscriptions.create(
       { channel: 'TableroomChannel', table_id: tableroomId },
       {
@@ -15,7 +14,7 @@ export default class extends Controller {
         received(response) {
           // update the DOM
           const data = JSON.parse(response);
-          console.log(card)
+          const card = document.getElementById(data.cardId)
           card.outerHTML = data.orderCardHTML;
         }
       }
@@ -30,11 +29,11 @@ export default class extends Controller {
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
       body: JSON.stringify({ quantity: -1 })
     })
-      .then(response => response.json())
-      .then(data => {
-        this.element.outerHTML = data.orderCardHTML;
-        this.updatePrice();
-      })
+      // .then(response => response.json())
+      // .then(data => {
+      //   this.element.outerHTML = data.orderCardHTML;
+      //   this.updatePrice();
+      // })
   }
 
   destroy(event) {
@@ -45,11 +44,11 @@ export default class extends Controller {
       method: 'DELETE',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
     })
-      .then(response => response.json())
-      .then(data => {
-        this.element.remove();
-        this.updatePrice();
-      })
+      // .then(response => response.json())
+      // .then(data => {
+      //   this.element.remove();
+      //   this.updatePrice();
+      // })
 
   }
 

@@ -40,17 +40,17 @@ end
 
 puts "Done seeding items"
 
-puts "Clearing item_orders db"
-ItemOrder.destroy_all
-20.times do |counter|
-  order_id = Order.order('RANDOM()').first.id
-  item_id = Item.order('RANDOM()').first.id
-  quantity = rand(1..10)
-  item_order = ItemOrder.new(order_id: order_id, item_id: item_id, quantity: quantity)
-  puts "Seeding #{counter} item_order"
-  item_order.save!
-end
-puts "Done seeding item_orders"
+# puts "Clearing item_orders db"
+# ItemOrder.destroy_all
+# 20.times do |counter|
+#   order_id = Order.order('RANDOM()').first.id
+#   item_id = Item.order('RANDOM()').first.id
+#   quantity = rand(1..10)
+#   item_order = ItemOrder.new(order_id: order_id, item_id: item_id, quantity: quantity)
+#   puts "Seeding #{counter} item_order"
+#   item_order.save!
+# end
+# puts "Done seeding item_orders"
 
 
 Review.destroy_all
