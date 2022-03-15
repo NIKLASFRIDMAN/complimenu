@@ -15,7 +15,8 @@
     <div class="d-flex">
         <% if user_signed_in? %>
           <% @users.each do |user| %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= image_tag "http://cdn.onlinewebfonts.com/svg/img_568656.png", class: "avatar", 'aria-haspopup': true, 'aria-expanded': false%>
+            <%# <p class="avatar" style="border: 1px solid; text-align: center; background-color: white;"><i class="fa-solid fa-user"></i></p> %>
           <% end %>
         <% else %>
       <% end %>
