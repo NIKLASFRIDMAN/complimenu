@@ -1,4 +1,4 @@
-<div class="dish-main-container">
+<div class="dish-main-container" data-controller="dish-card" data-tableroom-id="<%= @table.id %>">
 <% @category_items.each do |category, items| %>
 <div class="category-container">
   <div id="<%= category %>">
@@ -16,3 +16,4 @@
 <%= render "shared/basket_button", table: @table, quantity: @total_items %>
 
 <div class="button-background-colour"></div>
+</div>
