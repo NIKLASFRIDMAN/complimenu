@@ -8,8 +8,6 @@ export default class extends Controller {
   connect() {
    const tableroomId = this.element.dataset.tableroomId;
     const price = document.getElementById("total-price");
-    console.log("Hoi")
-    console.log(price)
     consumer.subscriptions.create(
       { channel: 'TableroomChannel', table_id: tableroomId },
       {
@@ -31,11 +29,11 @@ export default class extends Controller {
             totalPrice += parseFloat(element.innerText)
           })
           price.innerHTML = `<strong>${totalPrice} €</strong>`
-
         }
       }
     )
   }
+
   minus(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -45,11 +43,6 @@ export default class extends Controller {
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
       body: JSON.stringify({ quantity: -1 })
     })
-      // .then(response => response.json())
-      // .then(data => {
-      //   this.element.outerHTML = data.orderCardHTML;
-      //   this.updatePrice();
-      // })
   }
 
   destroy(event) {
@@ -60,12 +53,6 @@ export default class extends Controller {
       method: 'DELETE',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
     })
-      // .then(response => response.json())
-      // .then(data => {
-      //   this.element.remove();
-      //   this.updatePrice();
-      // })
-
   }
 
   plus(event) {
@@ -77,19 +64,5 @@ export default class extends Controller {
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
       body: JSON.stringify({ quantity: 1 })
     })
-      // .then(response => response.json())
-      // .then(data => {
-      //   this.element.outerHTML = data.orderCardHTML;
-      //   this.updatePrice();
-      // })
-  }
-
-  updatePrice() {
-    const price = document.getElementById("total-price");
-    let totalPrice = 0;
-    document.querySelectorAll(".item-order-price").forEach(element => {
-      totalPrice += parseFloat(element.innerText)
-    })
-    price.innerHTML = `${totalPrice} €`
   }
 }

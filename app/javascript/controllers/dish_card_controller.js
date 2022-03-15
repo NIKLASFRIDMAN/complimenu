@@ -19,6 +19,10 @@ export default class extends Controller {
           const card = document.getElementById(data.cardId);
           card.outerHTML = data.newCardHTML;
           basket.innerHTML = parseInt(basket.innerHTML) + parseInt(data.quantity)
+          basket.animate([
+            { transform: 'translate(0px,0px)' },
+            { transform: 'translate(0px,-6px)' }
+          ], 200)
         }
       }
     )
@@ -31,13 +35,8 @@ export default class extends Controller {
     fetch(btn.href, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
-      body: JSON.stringify({ quantity: 1 })
+      body: JSON.stringify({ quantity: -1 })
     })
-      // .then(response => response.json())
-      // .then(data => {
-      //   card.outerHTML = data.newCardHTML;
-      //   this.updateBasket(-1);
-      // })
   }
 
   destroy(event){
@@ -47,7 +46,7 @@ export default class extends Controller {
     fetch(btn.href, {
       method: 'DELETE',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
-      body: JSON.stringify({ quantity: 1 })
+      body: JSON.stringify({ quantity: -1 })
     })
   }
 
@@ -60,11 +59,6 @@ export default class extends Controller {
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
       body: JSON.stringify({ quantity: 1 })
     })
-      // .then(response => response.json())
-      // .then(data => {
-      //   // card.outerHTML = data.newCardHTML;
-      //   this.updateBasket(1);
-      // })
   }
 
   plus(event) {
@@ -89,14 +83,5 @@ export default class extends Controller {
       card.classList.add('toggle-paragraph');
       card.style.paddingRight = "10px";
     }
-  }
-
-  updateBasket(quantity) {
-    const basket = document.getElementById("basket-quantity")
-    basket.innerHTML = parseInt(basket.innerHTML) + quantity
-    basket.animate([
-      { transform: 'translate(0px,0px)' },
-      { transform: 'translate(0px,-6px)' }
-    ], 200)
   }
 }
