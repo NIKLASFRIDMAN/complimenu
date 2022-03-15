@@ -1,10 +1,26 @@
 import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs";
+import consumer from "../channels/consumer";
 
 export default class extends Controller {
 
-  static targets = ["minusButton", "plusButton", "deleteButton"]
-
+  static targets = ["minusButton", "plusButton", "deleteButton", "card"]
+  connect() {
+   const tableroomId = this.element.dataset.tableroomId;
+   const card = this.cardTarget
+    consumer.subscriptions.create(
+      { channel: 'TableroomChannel', table_id: tableroomId },
+      {
+        // when you receive something
+        received(response) {
+          // update the DOM
+          const data = JSON.parse(response);
+          console.log(card)
+          card.outerHTML = data.orderCardHTML;
+        }
+      }
+    )
+  }
   minus(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -46,11 +62,11 @@ export default class extends Controller {
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
       body: JSON.stringify({ quantity: 1 })
     })
-      .then(response => response.json())
-      .then(data => {
-        this.element.outerHTML = data.orderCardHTML;
-        this.updatePrice();
-      })
+      // .then(response => response.json())
+      // .then(data => {
+      //   this.element.outerHTML = data.orderCardHTML;
+      //   this.updatePrice();
+      // })
   }
 
   updatePrice() {

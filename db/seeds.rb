@@ -52,6 +52,7 @@ ItemOrder.destroy_all
 end
 puts "Done seeding item_orders"
 
+
 Review.destroy_all
 200.times do |counter|
   order_id = Order.order('RANDOM()').first.id

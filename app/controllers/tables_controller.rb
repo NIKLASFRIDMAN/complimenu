@@ -16,6 +16,11 @@ class TablesController < ApplicationController
       @user = User.new
       @user.table = @table
       @user.save
+      @users = User.where(table_id: @table.id)
+      TableroomChannel.broadcast_to(
+        @table,
+        render_to_string(partial: "shared/navbar", locals: { users: @users})
+      )
       sign_in(:user, @user)
     end
     @users = User.where(table_id: @table.id)
