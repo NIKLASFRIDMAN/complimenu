@@ -6,7 +6,6 @@ export default class extends Controller {
 
   static targets = ["items",  "description", "card", "minusButton", "plusButton", "deleteButton", "newButton"]
   connect() {
-    console.log("Hello")
     const itemsDiv = this.element;
     const tableroomId = itemsDiv.dataset.tableroomId;
     const basket = document.getElementById("basket-quantity")

@@ -10,22 +10,15 @@
   <%= link_to table_path(@table), class: "navbar-brand" do %>
     <span class="logo">Complimenu</span>
   <% end %>
-  <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <% @users.each do |user| %>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          </li>
-        <% end %>
-      <% else %>
-    <% end %>
-    </ul>
-  </div>
+    <div class="d-flex">
+        <% if user_signed_in? %>
+          <% @users.each do |user| %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+        <% else %>
+      <% end %>
+    </div>
   </div>
 </div>

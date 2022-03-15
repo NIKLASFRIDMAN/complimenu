@@ -7,6 +7,9 @@ export default class extends Controller {
   static targets = ["minusButton", "plusButton", "deleteButton", "card"]
   connect() {
    const tableroomId = this.element.dataset.tableroomId;
+    const price = document.getElementById("total-price");
+    console.log("Hoi")
+    console.log(price)
     consumer.subscriptions.create(
       { channel: 'TableroomChannel', table_id: tableroomId },
       {
@@ -14,8 +17,21 @@ export default class extends Controller {
         received(response) {
           // update the DOM
           const data = JSON.parse(response);
+          console.log(data)
           const card = document.getElementById(data.cardId)
-          card.outerHTML = data.orderCardHTML;
+          if (data.orderCardHTML) {
+            card.outerHTML = data.orderCardHTML;
+          }
+          else {
+            card.outerHTML = "";
+          }
+
+          let totalPrice = 0;
+          document.querySelectorAll(".item-order-price").forEach(element => {
+            totalPrice += parseFloat(element.innerText)
+          })
+          price.innerHTML = `<strong>${totalPrice} €</strong>`
+
         }
       }
     )
