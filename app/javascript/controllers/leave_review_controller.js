@@ -14,7 +14,7 @@ export default class extends Controller {
      .then(response => response.json())
      .then((data) => {
       //  console.log(data)
-       this.formTarget.parentElement.innerHTML = "Thank you for the review"
+       this.formTarget.parentElement.innerHTML = "Thank you for the review!"
      })
   }
 }
