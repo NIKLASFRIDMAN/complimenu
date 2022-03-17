@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :new, :create ]
   before_action :find_order, only: [:new, :create]
   before_action :find_table
+  before_action :find_user
 
   def new
     @review = Review.new
@@ -34,6 +35,10 @@ class ReviewsController < ApplicationController
 
    def find_table
     @table = Table.find(params[:table_id])
+  end
+
+  def find_user
+    @users = User.where(table_id: @table.id)
   end
 
 end
