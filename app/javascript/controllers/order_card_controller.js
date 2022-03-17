@@ -15,7 +15,6 @@ export default class extends Controller {
         received(response) {
           // update the DOM
           const data = JSON.parse(response);
-          console.log(data)
           const card = document.getElementById(data.cardId)
           if (data.orderCardHTML) {
             card.outerHTML = data.orderCardHTML;

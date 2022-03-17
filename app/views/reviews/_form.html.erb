@@ -1,4 +1,3 @@
   <%= simple_form_for [ @table, @review], data: { leave_review_target: "form", action: 'submit->leave-review#send'} do |f| %>
     <%= f.input :upvote, collection: (1..5).to_a, label: false, input_html: {class: "submitstar"} %>
-    <%= f.submit "Rate!", class: "submitbutton" %>
   <% end %>
