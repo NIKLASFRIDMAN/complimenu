@@ -3,6 +3,5 @@ class PagesController < ApplicationController
 
   def qrcode
     @table = Table.first
-    @table.save!
   end
 end

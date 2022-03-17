@@ -23,6 +23,8 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def success; end
+
   private
 
   def find_order
@@ -33,7 +35,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:upvote, :downvote)
   end
 
-   def find_table
+  def find_table
     @table = Table.find(params[:table_id])
   end
 

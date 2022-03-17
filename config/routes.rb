@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     get '/review', to: 'reviews#new', as: "review"
     get '/review', to: 'reviews#create'
+    get '/review/success', to: 'reviews#success'
   end
-  
+
 
 
 
