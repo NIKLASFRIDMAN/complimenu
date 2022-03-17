@@ -19,10 +19,6 @@
   padding: 0px 6px;
 }
 
-#plus-minus-button:hover {
-  color: #63825a;
-}
-
-.plus-minus-button-toggle {
-  text-shadow: rgb(73, 73, 72) 1px 0 1px;
-}
+#plus-minus-button:active {
+    color: #629252;
+  }
