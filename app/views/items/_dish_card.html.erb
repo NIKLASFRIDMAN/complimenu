@@ -1,5 +1,10 @@
+
 <div class="dish-card" data-controller="dish-card" data-dish-card-target="card"†>
   <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
+=======
+<div class="dish-card" data-dish-card-target="card" id= "card-<%= item.id %>">
+  <div class="dish-picture" style="background-image: url('<%= asset_path(item.image_url) %>');" >
+
     <p><%= item.total_reviews %> <i class="fa-regular fa-star"></i> </p>
   </div>
   <div class="dish-card-content">
@@ -13,7 +18,7 @@
         <%= render "item_orders/plus_button.html.erb", table: @table, item_order: item_order, item: item %>
       </p>
     </div>
-    <p class="toggle-paragraph description" data-action="click->dish-card#revealDescription" data-dish-card-target="description"><%= item.description %></p>
+    <p class="toggle-paragraph description" data-action="click->dish-card#revealDescription" data-dish-card-id-param="<%= item.id %>" id="card-description-<%= item.id %>"><%= item.description %></p>
     <h6 class="price"><%= item.price %> €</h6>
   </div>
 </div>

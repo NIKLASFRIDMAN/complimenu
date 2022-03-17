@@ -1,4 +1,4 @@
-<div class="navbar-container">
+<div class="navbar-container" data-user-id= <%= @table.id %>>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 <% if !current_page?(root_path) %>
 <a class="navbar-back" onclick="window.history.back()">
@@ -10,34 +10,16 @@
   <%= link_to table_path(@table), class: "navbar-brand" do %>
     <span class="logo">Complimenu</span>
   <% end %>
-  <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+    <div class="d-flex">
+        <% if user_signed_in? %>
+          <% @users.each do |user| %>
+              <%= image_tag "http://cdn.onlinewebfonts.com/svg/img_568656.png", class: "avatar", 'aria-haspopup': true, 'aria-expanded': false%>
+            <%# <p class="avatar" style="border: 1px solid; text-align: center; background-color: white;"><i class="fa-solid fa-user"></i></p> %>
+          <% end %>
+        <% else %>
       <% end %>
-    </ul>
-  </div>
+    </div>
   </div>
 </div>
