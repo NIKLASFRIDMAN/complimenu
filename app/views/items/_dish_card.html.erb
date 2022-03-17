@@ -1,11 +1,11 @@
-<div class="dish-card" data-controller="dish-card" data-dish-card-target="card">
-  <div class="dish-picture" style="background-image: url('<%= asset_path(item.image_url) %>');" >
+<div class="dish-card" data-controller="dish-card" data-dish-card-target="card"†>
+  <div class="dish-picture" style="background-image: url('<%= item.image_url %>');" >
     <p><%= item.total_reviews %> <i class="fa-regular fa-star"></i> </p>
   </div>
   <div class="dish-card-content">
-    <div class="title-plus-minus d-flex align-self-center">
+    <div class="title-plus-minus">
       <h2><%= item.name %></h2>
-      <p class="d-flex align-self-center">
+      <p>
         <%= render "item_orders/minus_button.html.erb", table: @table, item_order: item_order, item: item %>
         <span data-dish-card-target="quantity" id="quantity-<%= item.id %>">
           <%= item_order.present? ? item_order.quantity : 0 %>
