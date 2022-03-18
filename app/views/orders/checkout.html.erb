@@ -2,39 +2,34 @@
   <%= render 'shared/navbar' %>
   <div>
     <div class= "banner_summary_page">
-        <h1>Choose your payment method
-        </h1>
+        <h1>Choose your payment method</h1>
     </div>
     <div class="m-4">
       <section class="payment-btn-container">
-        <%= link_to "WAITER", table_waiter_path, class: 'payment-buttons'%>
-        <div class="double-arr-1">
-         <%= link_to table_waiter_path do %>
-          <i style= "color:white;" class="fa-solid fa-angles-right"></i>
-          <% end %>
-          <div class="Waiter-2">
+        <div class='payment-buttons'>
           <i class="fa-solid fa-user"></i>
-        </div>
-      </div>
-        <%= link_to "CASHIER", "#", class: 'payment-buttons'%>
-        <div class="double-arr-2">
-          <%= link_to table_card_path do %>
-          <i style= "color:white;" class="fa-solid fa-angles-right"></i>
+          <%= link_to "WAITER", table_waiter_path, class: 'payment-link'%>
+          <%= link_to table_waiter_path do %>
+            <i style= "color:white;" class="fa-solid fa-angles-right"></i>
           <% end %>
-          <div class="Cash-1">
+        </div>
+
+        <div class='payment-buttons'>
           <i class="fa-solid fa-cash-register"></i>
+          <%= link_to "CASHIER", "#", class: 'payment-link'%>
+          <%= link_to table_card_path do %>
+            <i style= "color:white;" class="fa-solid fa-angles-right"></i>
+          <% end %>
         </div>
-      </div>
-      
-        <%= link_to "CARD", table_card_path, class: 'payment-buttons'%>
-        <div class="double-arr-3">
-           <%= link_to  table_card_path do %>
-          <i style= "color:white;" class="fa-solid fa-angles-right"></i>
-           <% end %>
-          <div class="Card-3">
-            <i class="fa-solid fa-credit-card"></i>
+
+        <div class='payment-buttons'>
+          <i class="fa-solid fa-credit-card"></i>
+          <%= link_to "CARD", table_card_path, class: 'payment-link'%>
+          <%= link_to table_card_path do %>
+            <i style= "color:white;" class="fa-solid fa-angles-right"></i>
+          <% end %>
         </div>
-      </div>
+
       </section>
     </div>
   </div>
@@ -45,4 +40,3 @@
     <h2><strong><%= @all_items_total_price %> €</strong></h2>
   </section>
 </div>
-
