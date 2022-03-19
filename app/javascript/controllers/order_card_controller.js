@@ -27,7 +27,7 @@ export default class extends Controller {
           document.querySelectorAll(".item-order-price").forEach(element => {
             totalPrice += parseFloat(element.innerText)
           })
-          price.innerHTML = `<strong>${totalPrice} €</strong>`
+          price.innerHTML = `<strong>${String(totalPrice).match(/(\d+\.\d{2})/)[0]} €</strong>`
         }
       }
     )
