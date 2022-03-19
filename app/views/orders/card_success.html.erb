@@ -2,23 +2,21 @@
         <h1>Your payment was successful!
         <br>
         <br>
-        The kitchen is now preparing your meal.
         </h1>
 </div>
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px;">
 
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ETxTsuB08nnS-R6HRFF1IGFyZ9_v_7Jo0Tid_FvQcLVjl2VYJZ0BRwkSrrIt8DBNjYg&usqp=CAU" alt="">
+  <%= image_tag image_path("waiter-order.png"), height: "200px" %>
 </div>
 
 <div class="mr-2 ml-2" style="margin-top: 40px; margin-bottom: 30px;">
-  <h1>But please, do not close this page!</h1>
-  <h1>Please leave a review after you are done eating</h1>
+  <h1>Please leave a review after eating!</h1>
 </div>
 <div class="mr-2 ml-2">
     <h2 style=color:#BB9C4F>
     </h2>
 
   <section class="payment-btn-container">
-          <%= link_to "LEAVE A REVIEW", table_review_path, class: 'payment-buttons'%>
+          <%= link_to "LEAVE A REVIEW", table_review_path, class: 'payment-buttons-two'%>
   </section>
 </div>
