@@ -26,8 +26,8 @@ export default class extends Controller {
           let totalPrice = 0;
           document.querySelectorAll(".item-order-price").forEach(element => {
             totalPrice += parseFloat(element.innerText)
-          })
-          price.innerHTML = `<strong>${totalPrice} €</strong>`
+          })     
+          price.innerHTML = `<strong>` + `${totalPrice.toFixed(2)}`+ ` €</strong>`
         }
       }
     )
